@@ -1,9 +1,11 @@
 package com.be_casemd6.controller;
 
 import com.be_casemd6.model.Account;
+import com.be_casemd6.model.EmailDetails;
 import com.be_casemd6.model.Provider;
 import com.be_casemd6.repository.IAccountRepo;
 import com.be_casemd6.service.IAccountService;
+import com.be_casemd6.service.IEmailService;
 import com.be_casemd6.service.IProviderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,6 +22,8 @@ public class AccountController {
     private IAccountService accountService;
     @Autowired
     private IProviderService providerService;
+    @Autowired
+    private IEmailService emailService;
     @PostMapping
     public ResponseEntity<Account> createAccountAndProviderDefault(@RequestBody Account account){
         account.setDateOfRegister(new Date().toString());
@@ -33,6 +37,8 @@ public class AccountController {
         provider.setStatusProvider(0);
         provider.setStatusVIP(0);
         providerService.createProvider(provider);
+        EmailDetails emailDetails=new EmailDetails(account1.getEmail());
+        emailService.sendSimpleMail(emailDetails,account1.getUsername(),account1.getPassword());
         return new ResponseEntity<>(account1, HttpStatus.OK);
     }
 }
