@@ -9,4 +9,9 @@ public interface iAccountService {
     List<Account> findAllAccounts() ;
 
     Account findAccountById(int id);
+
+    Object save(Account account);
+
+    List<Account> findAllByFullNameContaining(String fullname);
+
 }

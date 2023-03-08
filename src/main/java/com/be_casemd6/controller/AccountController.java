@@ -20,7 +20,7 @@ public class AccountController {
         return new ResponseEntity<>(accountService.findAllAccounts(), HttpStatus.OK);
     }
 
-    @PutMapping("/accounts/{id}")
+    @PutMapping("/accounts/block/{id}")
     public ResponseEntity<?> blockAccount(@PathVariable int id) {
         Account account = accountService.findAccountById(id);
         if (account.getStatusAccount() == 1) {
@@ -28,6 +28,16 @@ public class AccountController {
         } else {
             account.setStatusAccount(1);
         }
-        return new ResponseEntity<>(account, HttpStatus.OK);
+        return new ResponseEntity<>(accountService.save(account), HttpStatus.OK);
+    }
+
+    @GetMapping("/search/{stringSearch}")
+    public ResponseEntity<List<Account>> search(@PathVariable String stringSearch) {
+        return new ResponseEntity<>(accountService.findAllByFullNameContaining(stringSearch), HttpStatus.OK);
+    }
+
+    @GetMapping("/accounts/{id}")
+    public ResponseEntity<Account> search(@PathVariable int id) {
+        return new ResponseEntity<>(accountService.findAccountById(id), HttpStatus.OK);
     }
 }

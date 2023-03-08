@@ -22,4 +22,14 @@ public class AccountService implements iAccountService {
     public Account findAccountById(int id) {
         return accountRepo.findById(id).get();
     }
+
+    @Override
+    public Object save(Account account) {
+        return accountRepo.save(account);
+    }
+
+    @Override
+    public List<Account> findAllByFullNameContaining(String fullname) {
+        return accountRepo.findAllByFullNameContaining(fullname);
+    }
 }
