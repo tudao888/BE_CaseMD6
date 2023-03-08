@@ -14,7 +14,6 @@ public class Provider {
     private Integer statusProvider;
     private Integer statusVIP;
     private Double price;
-
     @ManyToOne
     private Account account;
 }
