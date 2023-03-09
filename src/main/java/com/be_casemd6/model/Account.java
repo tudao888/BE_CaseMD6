@@ -5,6 +5,7 @@ import lombok.Data;
 import javax.persistence.*;
 import javax.print.attribute.standard.PrintQuality;
 import java.time.LocalDate;
+import java.util.Date;
 
 @Entity
 @Data
