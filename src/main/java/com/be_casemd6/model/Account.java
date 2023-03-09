@@ -31,4 +31,5 @@ public class Account {
     private String description;
     private Integer view;
     private Integer statusComment;
+    private Integer statusVip;
 }

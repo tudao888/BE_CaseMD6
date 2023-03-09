@@ -40,4 +40,15 @@ public class AccountController {
     public ResponseEntity<Account> search(@PathVariable int id) {
         return new ResponseEntity<>(accountService.findAccountById(id), HttpStatus.OK);
     }
+
+    @PutMapping("/accounts/vip/{id}")
+    public ResponseEntity<?> upVip(@PathVariable int id) {
+        Account account = accountService.findAccountById(id);
+        if (account.getStatusVip() == 1) {
+            account.setStatusVip(2);
+        } else {
+            account.setStatusVip(1);
+        }
+        return new ResponseEntity<>(accountService.save(account), HttpStatus.OK);
+    }
 }
