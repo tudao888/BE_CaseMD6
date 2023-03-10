@@ -41,4 +41,12 @@ public class AccountController {
         emailService.sendSimpleMail(emailDetails,account1.getUsername(),account1.getPassword());
         return new ResponseEntity<>(account1, HttpStatus.OK);
     }
+    @GetMapping("/findAccountByUsername/{username}")
+    public ResponseEntity<Account> findAccountByUsername(@PathVariable String username){
+        return new ResponseEntity<>(accountService.findAccountByUsername(username),HttpStatus.OK);
+    }
+    @GetMapping("/findAccountByEmail/{email}")
+    public ResponseEntity<Account> findAccountByEmail(@PathVariable String email){
+        return new ResponseEntity<>(accountService.findAccountByEmail(email),HttpStatus.OK);
+    }
 }

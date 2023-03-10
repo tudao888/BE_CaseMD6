@@ -21,4 +21,9 @@ public class AccountServiceImpl implements IAccountService {
     public Account findAccountByUsername(String username) {
         return accountRepo.findAccountByUsername(username);
     }
+
+    @Override
+    public Account findAccountByEmail(String email) {
+        return accountRepo.findAccountByEmail(email);
+    }
 }
