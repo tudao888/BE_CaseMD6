@@ -14,6 +14,12 @@ public class ProviderService implements IProviderService {
     @Autowired
     IProviderRepo iProviderRepo;
     @Override
+    public Provider createProvider(Provider provider) {
+        iProviderRepo.save(provider);
+        return provider;
+    }
+
+    @Override
     public List<Provider> getAllProviderAcc() {
         return (List<Provider>) iProviderRepo.findAll(Sort.by(Sort.Direction.DESC,"id"));
     }

@@ -17,4 +17,14 @@ public class AccountService implements IAccountService {
     public List<Account> getAllProvider() {
         return (List<Account>) iAccountRepo.findAll(Sort.by(Sort.Direction.DESC,"id"));
     }
+    @Override
+    public Account createAccount(Account account) {
+        iAccountRepo.save(account);
+        return account;
+    }
+
+    @Override
+    public Account findAccountByUsername(String username) {
+        return iAccountRepo.findAccountByUsername(username);
+    }
 }
