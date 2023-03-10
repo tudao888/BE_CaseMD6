@@ -1,6 +1,7 @@
 package com.be_casemd6.controller;
 
 import com.be_casemd6.model.Account;
+
 import com.be_casemd6.model.EmailDetails;
 import com.be_casemd6.model.Provider;
 import com.be_casemd6.repository.IAccountRepo;
@@ -40,7 +41,11 @@ public class AccountController {
         EmailDetails emailDetails=new EmailDetails(account1.getEmail());
         emailService.sendSimpleMail(emailDetails,account1.getUsername(),account1.getPassword());
         return new ResponseEntity<>(account1, HttpStatus.OK);
+        @GetMapping
+    public ResponseEntity<List<Account>> getAllProvider() {
+        return new ResponseEntity<>(iAccountService.getAllProvider(), HttpStatus.OK);
     }
+<<<<<<< HEAD
     @GetMapping("/findAccountByUsername/{username}")
     public ResponseEntity<Account> findAccountByUsername(@PathVariable String username){
         return new ResponseEntity<>(accountService.findAccountByUsername(username),HttpStatus.OK);
@@ -49,4 +54,7 @@ public class AccountController {
     public ResponseEntity<Account> findAccountByEmail(@PathVariable String email){
         return new ResponseEntity<>(accountService.findAccountByEmail(email),HttpStatus.OK);
     }
+=======
+
+>>>>>>> a483a158f0f01bb19e349ceb3e47ba770115000c
 }
