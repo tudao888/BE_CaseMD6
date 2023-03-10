@@ -1,15 +1,23 @@
 package com.be_casemd6.service;
 
+
 import com.be_casemd6.model.Account;
 
 import java.util.List;
 
 public interface IAccountService {
-    Account createAccount (Account account);
-    Account findAccountByUsername(String username);
+    List<Account> findAllAccounts() ;
 
-    Account findAccountByEmail(String email);
+    Account findAccountById(int id);
+
+    Object save(Account account);
+
+    List<Account> findAllByFullNameContaining(String fullname);
+
+    Account findAccountByUsername(String username);
+    Account findAccountByEmail(String username);
+
+    Account createAccount(Account account);
 
     List<Account> getAllProvider();
-
 }
