@@ -4,7 +4,6 @@ import com.be_casemd6.model.Account;
 
 import com.be_casemd6.model.EmailDetails;
 import com.be_casemd6.model.Provider;
-import com.be_casemd6.repository.IAccountRepo;
 import com.be_casemd6.service.IAccountService;
 import com.be_casemd6.service.IEmailService;
 import com.be_casemd6.service.IProviderService;
