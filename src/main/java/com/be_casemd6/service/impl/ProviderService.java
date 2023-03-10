@@ -13,6 +13,12 @@ import java.util.List;
 public class ProviderService implements IProviderService {
     @Autowired
     IProviderRepo iProviderRepo;
+
+    @Override
+    public Provider createProvider(Provider provider) {
+        return null;
+    }
+
     @Override
     public List<Provider> getAllProviderAcc() {
         return (List<Provider>) iProviderRepo.findAll(Sort.by(Sort.Direction.DESC,"id"));

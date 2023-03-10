@@ -13,6 +13,22 @@ import java.util.List;
 public class AccountService implements IAccountService {
     @Autowired
     IAccountRepo iAccountRepo;
+
+    @Override
+    public Account createAccount(Account account) {
+        return null;
+    }
+
+    @Override
+    public Account findAccountByUsername(String username) {
+        return iAccountRepo.findAccountByUsername(username);
+    }
+
+    @Override
+    public Account findAccountByEmail(String email) {
+        return iAccountRepo.findAccountByEmail(email);
+    }
+
     @Override
     public List<Account> getAllProvider() {
         return (List<Account>) iAccountRepo.findAll(Sort.by(Sort.Direction.DESC,"id"));
