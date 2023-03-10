@@ -14,4 +14,5 @@ public interface iAccountService {
 
     List<Account> findAllByFullNameContaining(String fullname);
 
+    Account findAccountByUsername(String username);
 }

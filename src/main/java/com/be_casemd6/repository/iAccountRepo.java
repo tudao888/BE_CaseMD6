@@ -8,5 +8,7 @@ import java.util.List;
 
 @Repository
 public interface iAccountRepo extends PagingAndSortingRepository<Account, Integer> {
+    Account findAccountByUsername(String username);
+
     List<Account> findAllByFullNameContaining(String fullname);
 }

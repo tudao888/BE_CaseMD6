@@ -6,14 +6,14 @@ import javax.persistence.*;
 
 @Entity
 @Data
-public class Bill {
+public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private Integer statusBill;
+    private Integer statusOrder;
     private Integer orderTime;
     private Double total;
-    private String dateOfBill;
+    private String dateOfOrder;
     @ManyToOne
     private Account account;
     @ManyToOne
