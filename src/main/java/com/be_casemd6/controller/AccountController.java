@@ -20,7 +20,7 @@ public class AccountController {
         return new ResponseEntity<>(accountService.findAllAccounts(), HttpStatus.OK);
     }
 
-    @PutMapping("/accounts/block/{id}")
+    @PostMapping("/accounts/block/{id}")
     public ResponseEntity<?> blockAccount(@PathVariable int id) {
         Account account = accountService.findAccountById(id);
         if (account.getStatusAccount() == 1) {
@@ -41,7 +41,7 @@ public class AccountController {
         return new ResponseEntity<>(accountService.findAccountById(id), HttpStatus.OK);
     }
 
-    @PutMapping("/accounts/vip/{id}")
+    @PostMapping("/accounts/vip/{id}")
     public ResponseEntity<?> upVip(@PathVariable int id) {
         Account account = accountService.findAccountById(id);
         if (account.getStatusVip() == 1) {
