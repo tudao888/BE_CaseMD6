@@ -6,6 +6,7 @@ import javax.persistence.*;
 import javax.print.attribute.standard.PrintQuality;
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Data
@@ -32,4 +33,6 @@ public class Account {
     private String description;
     private Integer view;
     private Integer statusComment;
+    @ManyToMany(fetch = FetchType.EAGER)
+    private List<Role> roles;
 }
