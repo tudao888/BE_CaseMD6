@@ -16,7 +16,8 @@ public class AccountService implements IAccountService {
 
     @Override
     public Account createAccount(Account account) {
-        return null;
+        iAccountRepo.save(account);
+        return account;
     }
 
     @Override

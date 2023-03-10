@@ -22,7 +22,7 @@ public class AccountController {
     private IEmailService emailService;
 
     @PostMapping
-    public ResponseEntity<Account> createAccountAndProviderDefault(@RequestBody Account account) {
+    public ResponseEntity<Account> createAccount(@RequestBody Account account) {
         account.setDateOfRegister(new Date().toString());
         account.setStatusAccount(0);
         account.setWallet(0.0);
