@@ -30,6 +30,5 @@ public class Account {
     private Integer weight;
     private String hobby;
     private String description;
-    private Integer view;
     private Integer statusComment;
 }

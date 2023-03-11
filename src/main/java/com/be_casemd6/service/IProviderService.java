@@ -10,4 +10,5 @@ public interface IProviderService {
     Provider createProvider (Provider provider);
     List<Provider> getAllProviderAcc();
 
+    List<Provider> getProviderTopView();
 }

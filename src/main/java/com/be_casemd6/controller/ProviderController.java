@@ -1,6 +1,8 @@
 package com.be_casemd6.controller;
 
+import com.be_casemd6.model.Account;
 import com.be_casemd6.model.Provider;
+import com.be_casemd6.service.IAccountService;
 import com.be_casemd6.service.IProviderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,10 +20,16 @@ import java.util.List;
 public class ProviderController {
     @Autowired
     IProviderService iProviderService;
+    @Autowired
+    IAccountService iAccountService;
 
 //    hiển thị dịch vụ của tài khoản là nhà cung cấp
     @GetMapping
     public ResponseEntity<List<Provider>> getAllProviderAcc() {
         return new ResponseEntity<>(iProviderService.getAllProviderAcc(), HttpStatus.OK);
+    }
+    @GetMapping("/top/view")
+    public ResponseEntity<List<Provider>> getProviderTopView() {
+        return new ResponseEntity<>(iProviderService.getProviderTopView(),HttpStatus.OK);
     }
 }

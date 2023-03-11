@@ -44,6 +44,7 @@ public class AccountController {
         return new ResponseEntity<>(account1, HttpStatus.OK);
     }
 
+
     @GetMapping
     public ResponseEntity<List<Account>> getAllProvider() {
         return new ResponseEntity<>(iAccountService.getAllProvider(), HttpStatus.OK);
