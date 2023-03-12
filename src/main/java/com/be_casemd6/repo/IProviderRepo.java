@@ -8,6 +8,9 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 import java.util.List;
 
 public interface IProviderRepo extends PagingAndSortingRepository<Provider,Integer> {
+    @Query(nativeQuery = true, value = "SELECT * from provider where status_provider = 1 order by id desc ")
+    List<Provider> getProviders();
     @Query(nativeQuery = true, value = "SELECT * FROM provider order by view desc")
     List<Provider> getProviderTopView();
+
 }

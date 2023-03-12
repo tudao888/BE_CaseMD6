@@ -16,4 +16,6 @@ public interface IProviderService {
     Provider findProviderById(Integer id);
 
     Provider increaseViewProviderById(Integer id);
+
+    Provider changeStatusProvider(Integer id);
 }

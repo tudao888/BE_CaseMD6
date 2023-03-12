@@ -21,7 +21,7 @@ public class ProviderService implements IProviderService {
     }
     @Override
     public List<Provider> getAllProviderAcc() {
-        return (List<Provider>) iProviderRepo.findAll(Sort.by(Sort.Direction.DESC,"id"));
+        return iProviderRepo.getProviders();
     }
     @Override
     public List<Provider> getProviderTopView() {
@@ -42,6 +42,15 @@ public class ProviderService implements IProviderService {
     public Provider increaseViewProviderById(Integer id) {
         Provider provider = iProviderRepo.findById(id).get();
         provider.setView(provider.getView()+1);
+        iProviderRepo.save(provider);
+        return provider;
+    }
+    @Override
+    public Provider changeStatusProvider(Integer id) {
+        Provider provider = iProviderRepo.findById(id).get();
+        if(provider.getStatusProvider()==1) {
+            provider.setStatusProvider(2);
+        }else provider.setStatusProvider(1);
         iProviderRepo.save(provider);
         return provider;
     }
