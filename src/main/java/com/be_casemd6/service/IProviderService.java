@@ -12,5 +12,8 @@ public interface IProviderService {
 
     List<Provider> getProviderTopView();
 
+
     Provider findProviderById(Integer id);
+
+    Provider increaseViewProviderById(Integer id);
 }

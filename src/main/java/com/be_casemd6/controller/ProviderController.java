@@ -32,7 +32,11 @@ public class ProviderController {
         return new ResponseEntity<>(iProviderService.getProviderTopView(),HttpStatus.OK);
     }
     @GetMapping("/{id}")
-    public ResponseEntity<Provider> findProviderById(@PathVariable Integer id) {
+    public ResponseEntity<Provider> findProviderByIdAndIncreaseView(@PathVariable Integer id) {
         return new ResponseEntity<>(iProviderService.findProviderById(id),HttpStatus.OK);
+    }
+    @PutMapping("/view/{id}")
+    public ResponseEntity<Provider> increaseViewProviderById(@PathVariable Integer id) {
+        return new ResponseEntity<>(iProviderService.increaseViewProviderById(id),HttpStatus.OK);
     }
 }

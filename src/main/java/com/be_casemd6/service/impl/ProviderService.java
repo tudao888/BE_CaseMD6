@@ -32,8 +32,17 @@ public class ProviderService implements IProviderService {
         }
         return providerList;
     }
+//    hàm tìm ncc theo id, mỗi lần tìm thấy là tăng view lên
+//    (hàm xem thông tin chi tiết và tăng view theo số lần click)
     @Override
     public Provider findProviderById(Integer id) {
        return iProviderRepo.findById(id).get();
+    }
+    @Override
+    public Provider increaseViewProviderById(Integer id) {
+        Provider provider = iProviderRepo.findById(id).get();
+        provider.setView(provider.getView()+1);
+        iProviderRepo.save(provider);
+        return provider;
     }
 }
