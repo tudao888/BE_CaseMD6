@@ -85,7 +85,7 @@ public class AccountController {
     @PostMapping("/admin/accounts/vip/{id}")
     public ResponseEntity<?> upVip(@PathVariable int id) {
         Account account = iAccountService.findAccountById(id);
-        if (account.getStatusVip() == 1) {
+        if (account.getStatusVip() == 1||account.getStatusVip() == 3) {
             account.setStatusVip(2);
         } else {
             account.setStatusVip(1);
