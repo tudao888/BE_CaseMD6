@@ -32,4 +32,8 @@ public class ProviderService implements IProviderService {
         }
         return providerList;
     }
+    @Override
+    public Provider findProviderById(Integer id) {
+       return iProviderRepo.findById(id).get();
+    }
 }

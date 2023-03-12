@@ -7,11 +7,9 @@ import com.be_casemd6.service.IProviderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import java.util.List;
 
 @RestController
@@ -28,8 +26,13 @@ public class ProviderController {
     public ResponseEntity<List<Provider>> getAllProviderAcc() {
         return new ResponseEntity<>(iProviderService.getAllProviderAcc(), HttpStatus.OK);
     }
+//    hiển thị 8 nhà cung cấp có lượt view cao nhất
     @GetMapping("/top/view")
     public ResponseEntity<List<Provider>> getProviderTopView() {
         return new ResponseEntity<>(iProviderService.getProviderTopView(),HttpStatus.OK);
+    }
+    @GetMapping("/{id}")
+    public ResponseEntity<Provider> findProviderById(@PathVariable Integer id) {
+        return new ResponseEntity<>(iProviderService.findProviderById(id),HttpStatus.OK);
     }
 }
