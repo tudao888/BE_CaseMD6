@@ -42,6 +42,7 @@ public class AccountController {
         account.setDateOfRegister(new Date().toString());
         account.setStatusAccount(1);
         account.setWallet(0.0);
+
         EmailDetails emailDetails = new EmailDetails(account.getEmail());
         emailService.sendSimpleMail(emailDetails, account.getUsername(), account.getPassword());
         return new ResponseEntity<>(account, HttpStatus.OK);
