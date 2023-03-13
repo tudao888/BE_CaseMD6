@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -20,7 +21,43 @@ public class ProviderService implements IProviderService {
     }
 
     @Override
+    public Provider createProvider(Provider provider) {
+        iProviderRepo.save(provider);
+        return provider;
+    }
+    @Override
     public List<Provider> getAllProviderAcc() {
-        return (List<Provider>) iProviderRepo.findAll(Sort.by(Sort.Direction.DESC,"id"));
+        return iProviderRepo.getProviders();
+    }
+    @Override
+    public List<Provider> getProviderTopView() {
+        List<Provider> providers = iProviderRepo.getProviderTopView();
+        List<Provider> providerList = new ArrayList<>();
+        for (int i = 0; i < 8; i++) {
+            providerList.add(providers.get(i));
+        }
+        return providerList;
+    }
+//    hàm tìm ncc theo id, mỗi lần tìm thấy là tăng view lên
+//    (hàm xem thông tin chi tiết và tăng view theo số lần click)
+    @Override
+    public Provider findProviderById(Integer id) {
+       return iProviderRepo.findById(id).get();
+    }
+    @Override
+    public Provider increaseViewProviderById(Integer id) {
+        Provider provider = iProviderRepo.findById(id).get();
+        provider.setView(provider.getView()+1);
+        iProviderRepo.save(provider);
+        return provider;
+    }
+    @Override
+    public Provider changeStatusProvider(Integer id) {
+        Provider provider = iProviderRepo.findById(id).get();
+        if(provider.getStatusProvider()==1) {
+            provider.setStatusProvider(2);
+        }else provider.setStatusProvider(1);
+        iProviderRepo.save(provider);
+        return provider;
     }
 }

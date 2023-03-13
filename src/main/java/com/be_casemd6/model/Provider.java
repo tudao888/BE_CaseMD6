@@ -13,6 +13,7 @@ public class Provider {
     private String linkFB;
     private Integer statusProvider;
     private Double price;
+    private Integer view;
     @ManyToOne
     private Account account;
 }

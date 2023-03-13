@@ -2,7 +2,11 @@ package com.be_casemd6.controller;
 
 import com.be_casemd6.model.Account;
 import com.be_casemd6.model.EmailDetails;
+
+import com.be_casemd6.model.Provider;
+
 import com.be_casemd6.model.Role;
+
 import com.be_casemd6.service.IAccountService;
 import com.be_casemd6.service.IEmailService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,8 +23,15 @@ import java.util.List;
 public class AccountController {
     @Autowired
     private IAccountService iAccountService;
+
+    @Autowired
+    private IProviderService iProviderService;
     @Autowired
     private IEmailService emailService;
+
+    @PostMapping
+    public ResponseEntity<Account> createAccountAndProviderDefault(@RequestBody Account account) {
+
 
     @PostMapping("/register")
     public ResponseEntity<Account> createAccount(@RequestBody Account account) {
@@ -29,18 +40,16 @@ public class AccountController {
         role.setId(1);
         roles.add(role);
         account.setRoles(roles);
+//>>>>>>> editProfile
         account.setDateOfRegister(new Date().toString());
         account.setStatusAccount(1);
         account.setWallet(0.0);
-        account.setStatusComment(1);
-        account.setStatusVip(1);
-        iAccountService.createAccount(account);
-        Account account1 = iAccountService.findAccountByUsername(account.getUsername());
+
+//>>>>>>> editProfile
         EmailDetails emailDetails = new EmailDetails(account1.getEmail());
         emailService.sendSimpleMail(emailDetails, account1.getUsername(), account1.getPassword());
         return new ResponseEntity<>(account1, HttpStatus.OK);
     }
-
     @GetMapping
     public ResponseEntity<List<Account>> getAllProvider() {
         return new ResponseEntity<>(iAccountService.getAllProvider(), HttpStatus.OK);
