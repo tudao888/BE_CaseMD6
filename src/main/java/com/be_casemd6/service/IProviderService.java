@@ -10,4 +10,12 @@ public interface IProviderService {
     Provider createProvider (Provider provider);
     List<Provider> getAllProviderAcc();
 
+    List<Provider> getProviderTopView();
+
+
+    Provider findProviderById(Integer id);
+
+    Provider increaseViewProviderById(Integer id);
+
+    Provider changeStatusProvider(Integer id);
 }

@@ -5,7 +5,7 @@ import lombok.Data;
 import javax.persistence.*;
 import javax.print.attribute.standard.PrintQuality;
 import java.time.LocalDate;
-import java.util.Date;
+import java.util.List;
 
 @Entity
 @Data
@@ -30,6 +30,10 @@ public class Account {
     private Integer weight;
     private String hobby;
     private String description;
-    private Integer view;
     private Integer statusComment;
+    private Integer statusVip;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    private List<Role> roles;
+
 }
