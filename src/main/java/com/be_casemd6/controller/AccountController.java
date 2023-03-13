@@ -9,6 +9,7 @@ import com.be_casemd6.model.Role;
 
 import com.be_casemd6.service.IAccountService;
 import com.be_casemd6.service.IEmailService;
+import com.be_casemd6.service.IProviderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,8 +30,6 @@ public class AccountController {
     @Autowired
     private IEmailService emailService;
 
-    @PostMapping
-    public ResponseEntity<Account> createAccountAndProviderDefault(@RequestBody Account account) {
 
 
     @PostMapping("/register")
@@ -40,15 +39,12 @@ public class AccountController {
         role.setId(1);
         roles.add(role);
         account.setRoles(roles);
-//>>>>>>> editProfile
         account.setDateOfRegister(new Date().toString());
         account.setStatusAccount(1);
         account.setWallet(0.0);
-
-//>>>>>>> editProfile
-        EmailDetails emailDetails = new EmailDetails(account1.getEmail());
-        emailService.sendSimpleMail(emailDetails, account1.getUsername(), account1.getPassword());
-        return new ResponseEntity<>(account1, HttpStatus.OK);
+        EmailDetails emailDetails = new EmailDetails(account.getEmail());
+        emailService.sendSimpleMail(emailDetails, account.getUsername(), account.getPassword());
+        return new ResponseEntity<>(account, HttpStatus.OK);
     }
     @GetMapping
     public ResponseEntity<List<Account>> getAllProvider() {

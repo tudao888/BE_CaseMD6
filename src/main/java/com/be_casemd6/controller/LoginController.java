@@ -45,13 +45,4 @@ public class LoginController {
         return accountToken;
     }
 
-//    @PostMapping("/register")
-//    public ResponseEntity<Account> register(@RequestBody Account account) {
-//        List<Role> roles = new ArrayList<>();
-//        Role role = new Role();
-//        role.setId(1);
-//        roles.add(role);
-//        account.setRoles(roles);
-//        return new ResponseEntity<>(accountService.save(account), HttpStatus.OK);
-//    }
 }

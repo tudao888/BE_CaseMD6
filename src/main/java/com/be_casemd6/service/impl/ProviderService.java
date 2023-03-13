@@ -15,10 +15,6 @@ public class ProviderService implements IProviderService {
     @Autowired
     IProviderRepo iProviderRepo;
 
-    @Override
-    public Provider createProvider(Provider provider) {
-        return null;
-    }
 
     @Override
     public Provider createProvider(Provider provider) {
