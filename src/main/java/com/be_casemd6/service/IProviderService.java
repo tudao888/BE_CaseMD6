@@ -9,5 +9,6 @@ import java.util.List;
 public interface IProviderService {
     Provider createProvider (Provider provider);
     List<Provider> getAllProviderAcc();
+    Provider findProviderByAccountUsername(String username);
 
 }

@@ -18,4 +18,11 @@ public class ProvisionProviderService implements IProvisionProviderService {
     public List<ProvisionProvider> getAllProvisionProvider() {
         return (List<ProvisionProvider>) iProvisionProviderRepo.findAll();
     }
+
+    @Override
+    public List<ProvisionProvider> getAllProvisionByProviderId(Integer id) {
+        return iProvisionProviderRepo.findAllByProviderId(id);
+    }
+
+
 }

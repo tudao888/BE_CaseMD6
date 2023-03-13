@@ -7,4 +7,5 @@ import java.util.List;
 public interface IProvisionProviderService {
     //    hien thi cac dich vu cua nha cung cap
     List<ProvisionProvider> getAllProvisionProvider();
+    List<ProvisionProvider> getAllProvisionByProviderId(Integer id);
 }

@@ -23,4 +23,9 @@ public class ProviderService implements IProviderService {
     public List<Provider> getAllProviderAcc() {
         return (List<Provider>) iProviderRepo.findAll(Sort.by(Sort.Direction.DESC,"id"));
     }
+
+    @Override
+    public Provider findProviderByAccountUsername(String username) {
+        return iProviderRepo.findProviderByAccount_Username(username);
+    }
 }
