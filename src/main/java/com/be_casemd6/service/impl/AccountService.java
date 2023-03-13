@@ -40,10 +40,6 @@ public class AccountService implements IAccountService, UserDetailsService {
         return iAccountRepo.findAllByFullNameContaining(fullname);
     }
 
-    @Override
-    public Account findAccountByUsername(String username) {
-        return iAccountRepo.findAccountByUsername(username);
-    }
 
     @Override
     public Account findAccountByEmail(String email) {
@@ -61,11 +57,6 @@ public class AccountService implements IAccountService, UserDetailsService {
         return new User(account.getUsername(), account.getPassword(), account.getRoles());
     }
 
-    @Override
-    public Account createAccount(Account account) {
-        iAccountRepo.save(account);
-        return account;
-    }
     @Override
     public Account createAccount(Account account) {
         iAccountRepo.save(account);
