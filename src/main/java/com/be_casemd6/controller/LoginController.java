@@ -41,7 +41,7 @@ public class LoginController {
 
         String token = jwtService.createToken(authentication);
         Account account1 = accountService.findAccountByUsername(account.getUsername());
-        AccountToken accountToken = new AccountToken(account1.getId(),account1.getUsername(),token,account1.getRoles());
+        AccountToken accountToken = new AccountToken(account1.getId(),account1.getUsername(),token,account1,account1.getRoles());
         return accountToken;
     }
 
