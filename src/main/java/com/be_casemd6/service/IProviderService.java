@@ -19,4 +19,6 @@ public interface IProviderService {
     Provider increaseViewProviderById(Integer id);
 
     Provider changeStatusProvider(Integer id);
+
+    Provider save(Provider provider);
 }

@@ -17,6 +17,4 @@ public class ProvisionProvider {
 
     @ManyToOne
     private Provision provision;
-
-
 }

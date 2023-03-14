@@ -1,14 +1,11 @@
 package com.be_casemd6.controller;
 
-import com.be_casemd6.model.Account;
-import com.be_casemd6.model.EmailDetails;
+import com.be_casemd6.model.*;
 
-import com.be_casemd6.model.Provider;
-
-import com.be_casemd6.model.Role;
-
+import com.be_casemd6.repo.IImageRepo;
 import com.be_casemd6.service.IAccountService;
 import com.be_casemd6.service.IEmailService;
+import com.be_casemd6.service.IImageService;
 import com.be_casemd6.service.IProviderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -26,11 +23,10 @@ public class AccountController {
     private IAccountService iAccountService;
 
     @Autowired
-    private IProviderService iProviderService;
-    @Autowired
     private IEmailService emailService;
 
-
+    @Autowired
+    private IImageService iImageService;
 
     @PostMapping("/register")
     public ResponseEntity<Account> createAccount(@RequestBody Account account) {
@@ -111,4 +107,8 @@ public class AccountController {
         return new ResponseEntity<Account>(iAccountService.findAccountById(id),HttpStatus.OK);
     }
 
+    @PostMapping("saveImage")
+    public ResponseEntity<Image> saveImage(@RequestBody Image image){
+        return new ResponseEntity<>(iImageService.save(image),HttpStatus.OK);
+    }
 }

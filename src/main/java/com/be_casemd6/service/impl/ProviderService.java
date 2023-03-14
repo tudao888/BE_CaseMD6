@@ -58,6 +58,11 @@ public class ProviderService implements IProviderService {
     }
 
     @Override
+    public Provider save(Provider provider) {
+        return iProviderRepo.save(provider);
+    }
+
+    @Override
     public Provider findProviderByAccountUsername(String username) {
         return iProviderRepo.findProviderByAccount_Username(username);
     }

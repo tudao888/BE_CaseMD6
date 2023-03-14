@@ -11,18 +11,23 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping()
+@RequestMapping("/provisionproviders")
 @CrossOrigin("*")
 public class ProvisionProviderController {
     @Autowired
     IProvisionProviderService iProvisionProviderService;
-    @GetMapping("/provisionproviders")
+    @GetMapping()
     public ResponseEntity<List<ProvisionProvider>> getAllProvisionProvider() {
         return new ResponseEntity<>(iProvisionProviderService.getAllProvisionProvider(), HttpStatus.OK);
     }
-    @GetMapping("/provisionproviders/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<List<ProvisionProvider>> getAllByUsername(@PathVariable Integer id){
         return new ResponseEntity<>(iProvisionProviderService.getAllProvisionByProviderId(id),HttpStatus.OK);
+    }
+
+    @PostMapping()
+    public ResponseEntity<ProvisionProvider> createProvisionProvider(ProvisionProvider provider) {
+        return new ResponseEntity<>(iProvisionProviderService.save(provider), HttpStatus.OK);
     }
 
 }

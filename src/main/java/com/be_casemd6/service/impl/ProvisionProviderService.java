@@ -24,5 +24,10 @@ public class ProvisionProviderService implements IProvisionProviderService {
         return iProvisionProviderRepo.findAllByProviderId(id);
     }
 
+    @Override
+    public ProvisionProvider save(ProvisionProvider provider) {
+        return iProvisionProviderRepo.save(provider);
+    }
+
 
 }
