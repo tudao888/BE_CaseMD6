@@ -7,14 +7,19 @@ import com.be_casemd6.model.Provider;
 
 import com.be_casemd6.model.Role;
 
+import com.be_casemd6.model.dto.AvatarDTO;
 import com.be_casemd6.service.IAccountService;
 import com.be_casemd6.service.IEmailService;
 import com.be_casemd6.service.IProviderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -110,5 +115,15 @@ public class AccountController {
     public ResponseEntity<Account> getAccountT(@PathVariable int id){
         return new ResponseEntity<Account>(iAccountService.findAccountById(id),HttpStatus.OK);
     }
-
+    @PostMapping("/upAvater")
+    public AvatarDTO upImg(@RequestParam MultipartFile fileImg) {
+        String nameImg = fileImg.getOriginalFilename();
+        try {
+            FileCopyUtils.copy(fileImg.getBytes(), new File("C:\\Users\\ASUS\\Desktop\\FE-6\\FE_CaseModule6_ThueNguoiYeu\\src\\assets\\images\\avatar/" + nameImg));
+            return new AvatarDTO("assets/images/avatar" + nameImg);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }
