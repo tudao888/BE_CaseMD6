@@ -35,7 +35,7 @@ public class ProviderController {
     public ResponseEntity<Provider> findProviderByIdAndIncreaseView(@PathVariable Integer id) {
         return new ResponseEntity<>(iProviderService.findProviderById(id),HttpStatus.OK);
     }
-    @PutMapping("/view/{id}")
+    @PostMapping("/view/{id}")
     public ResponseEntity<Provider> increaseViewProviderById(@PathVariable Integer id) {
         return new ResponseEntity<>(iProviderService.increaseViewProviderById(id),HttpStatus.OK);
     }

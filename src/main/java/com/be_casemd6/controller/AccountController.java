@@ -98,6 +98,9 @@ public class AccountController {
         }
         return new ResponseEntity<>(iAccountService.save(account), HttpStatus.OK);
     }
+
+    //user
+
     @PostMapping("/user/editProfile")
     public ResponseEntity<Account> editProfileT(@RequestBody Account account){
         return new ResponseEntity<>(iAccountService.createAccount(account),HttpStatus.OK);
@@ -106,4 +109,5 @@ public class AccountController {
     public ResponseEntity<Account> getAccountT(@PathVariable int id){
         return new ResponseEntity<Account>(iAccountService.findAccountById(id),HttpStatus.OK);
     }
+
 }
