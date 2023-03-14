@@ -11,4 +11,12 @@ public interface IProviderService {
     List<Provider> getAllProviderAcc();
     Provider findProviderByAccountUsername(String username);
 
+    List<Provider> getProviderTopView();
+
+
+    Provider findProviderById(Integer id);
+
+    Provider increaseViewProviderById(Integer id);
+
+    Provider changeStatusProvider(Integer id);
 }
