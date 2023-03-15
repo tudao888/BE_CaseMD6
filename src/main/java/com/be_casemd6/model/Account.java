@@ -21,6 +21,7 @@ public class Account {
     private String dateOfRegister;
     private Double wallet;
     private LocalDate logoutTime;
+    private String phoneNumber;
     private String fullName;
     private String gender;
     private String city;
