@@ -58,6 +58,6 @@ public class ProviderController {
 
     @GetMapping("/orders/{idProvider}")
     public ResponseEntity<List<Order>> getProviderById(@PathVariable int idProvider){
-        return new ResponseEntity<>(iOrderService.getProviderById(idProvider),HttpStatus.OK);
+        return new ResponseEntity<>(iOrderService.getAllBillOfProviderById(idProvider),HttpStatus.OK);
     }
 }

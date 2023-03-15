@@ -26,8 +26,13 @@ public class OrderService implements IOrderService {
     }
 
     @Override
-    public List<Order> getProviderById(int idProvider) {
-        return iOrderRepo.getProviderById(idProvider);
+    public List<Order> getAllBillOfProviderById(int idProvider) {
+        return iOrderRepo.getAllBillOfProviderById(idProvider);
+    }
+
+    @Override
+    public Order findOrderById(int id) {
+        return iOrderRepo.findById(id).get();
     }
 
 }
