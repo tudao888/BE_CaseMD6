@@ -22,34 +22,9 @@ public class OrderController {
         return new ResponseEntity<>(orderService.getAllOrders(), HttpStatus.OK);
     }
 
-//    @GetMapping("/unShipped")
-//    public ResponseEntity<List<Order>> getAllOrderUnShipped() {
-//        return new ResponseEntity<>(orderService.getAllOrderUnShipped(), HttpStatus.OK);
-//    }
-//
-//    @GetMapping("/pending")
-//    public ResponseEntity<List<Order>> getAllOrderPending() {
-//        return new ResponseEntity<>(orderService.getAllOrderPending(), HttpStatus.OK);
-//    }
-//
-//    @GetMapping("/confirmed")
-//    public ResponseEntity<List<Order>> getAllOrderConfirmed() {
-//        return new ResponseEntity<>(orderService.getAllOrderConfirmed(), HttpStatus.OK);
-//    }
-//
-//    @GetMapping("/rejected")
-//    public ResponseEntity<List<Order>> getAllOrderRejected() {
-//        return new ResponseEntity<>(orderService.getAllOrderRejected(), HttpStatus.OK);
-//    }
-//
-//    @GetMapping("/completed")
-//    public ResponseEntity<List<Order>> getAllOrderCompleted() {
-//        return new ResponseEntity<>(orderService.getAllOrderCompleted(), HttpStatus.OK);
-//    }
-
-        @GetMapping("/{status}")
-    public ResponseEntity<List<Order>> getAllOrderByStatus(@PathVariable int status) {
-        return new ResponseEntity<>(orderService.getAllOrderByStatus(status), HttpStatus.OK);
+    @GetMapping("/{statusOrder}")
+    public ResponseEntity<List<Order>> getAllOrderByStatus(@PathVariable int statusOrder) {
+        return new ResponseEntity<>(orderService.getAllOrderByStatus(statusOrder), HttpStatus.OK);
     }
 
 }

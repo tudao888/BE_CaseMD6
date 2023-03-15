@@ -9,13 +9,5 @@ import java.util.List;
 public interface IOrderService {
     List<Order> getAllOrders();
 
-    List<Order> getAllOrderUnShipped();
-
-    List<Order> getAllOrderPending();
-
-    List<Order> getAllOrderConfirmed();
-    List<Order> getAllOrderRejected();
-    List<Order> getAllOrderCompleted();
-
     List<Order> getAllOrderByStatus(int status);
 }

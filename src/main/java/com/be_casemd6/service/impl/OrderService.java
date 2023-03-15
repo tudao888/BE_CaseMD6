@@ -20,31 +20,6 @@ public class OrderService implements IOrderService {
     }
 
     @Override
-    public List<Order> getAllOrderUnShipped() {
-        return iOrderRepo.getAllOrderUnShipped();
-    }
-
-    @Override
-    public List<Order> getAllOrderPending() {
-        return iOrderRepo.getAllOrderPending();
-    }
-
-    @Override
-    public List<Order> getAllOrderConfirmed() {
-        return iOrderRepo.getAllOrderConfirmed();
-    }
-
-    @Override
-    public List<Order> getAllOrderRejected() {
-        return iOrderRepo.getAllOrderRejected();
-    }
-
-    @Override
-    public List<Order> getAllOrderCompleted() {
-        return iOrderRepo.getAllOrderCompleted();
-    }
-
-    @Override
     public List<Order> getAllOrderByStatus(int status) {
         return iOrderRepo.getAllOrderByStatus(status);
     }
