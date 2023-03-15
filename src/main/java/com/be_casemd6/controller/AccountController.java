@@ -32,15 +32,15 @@ public class AccountController {
     public ResponseEntity<Account> createAccount(@RequestBody Account account) {
         List<Role> roles = new ArrayList<>();
         Role role = new Role();
-        role.setId(1);
+        role.setId(2);
         roles.add(role);
         account.setRoles(roles);
         account.setDateOfRegister(new Date().toString());
         account.setStatusAccount(1);
         account.setWallet(0.0);
-
         EmailDetails emailDetails = new EmailDetails(account.getEmail());
         emailService.sendSimpleMail(emailDetails, account.getUsername(), account.getPassword());
+        iAccountService.createAccount(account);
         return new ResponseEntity<>(account, HttpStatus.OK);
     }
     @GetMapping
