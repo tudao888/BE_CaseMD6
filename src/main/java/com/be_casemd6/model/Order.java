@@ -3,6 +3,7 @@ package com.be_casemd6.model;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Data
@@ -14,7 +15,9 @@ public class Order {
     private Integer statusOrder;
     private Integer orderTime;
     private Double total;
-    private String dateOfOrder;
+    private Date dateOfOrder;
+    private Date startDay;
+    private Date endDay;
     @ManyToOne
     private Account account;
     @ManyToOne

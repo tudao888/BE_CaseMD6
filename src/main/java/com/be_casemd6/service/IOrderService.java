@@ -18,4 +18,6 @@ public interface IOrderService {
     List<Order> getAllOrderCompleted();
 
     List<Order> getAllOrderByStatus(int status);
+
+    Order save(Order order);
 }

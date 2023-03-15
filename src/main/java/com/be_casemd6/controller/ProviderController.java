@@ -41,13 +41,14 @@ public class ProviderController {
     public ResponseEntity<Provider> changeStatusProvider(@PathVariable Integer id) {
         return new ResponseEntity<>(iProviderService.changeStatusProvider(id),HttpStatus.OK);
     }
-    @GetMapping("{username}")
-    public ResponseEntity<Provider> findProvider(@PathVariable String username){
-        return new ResponseEntity<>(iProviderService.findProviderByAccountUsername(username),HttpStatus.OK);
-    }
+
 
     @PostMapping()
     public ResponseEntity<Provider> createProvider(@RequestBody Provider provider){
         return new ResponseEntity<>(iProviderService.save(provider),HttpStatus.OK);
+    }
+    @RequestMapping(value = "/user/{username}", method = RequestMethod.GET)
+    public Provider findProviderByUsername(@PathVariable String username){
+        return iProviderService.findProviderByAccountUsername(username);
     }
 }

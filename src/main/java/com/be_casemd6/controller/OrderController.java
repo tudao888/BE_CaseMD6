@@ -1,14 +1,17 @@
 package com.be_casemd6.controller;
 
 import com.be_casemd6.model.Order;
-import com.be_casemd6.service.IOrderService;
 import com.be_casemd6.service.impl.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 @RestController
 @CrossOrigin("*")
@@ -50,6 +53,14 @@ public class OrderController {
         @GetMapping("/{status}")
     public ResponseEntity<List<Order>> getAllOrderByStatus(@PathVariable int status) {
         return new ResponseEntity<>(orderService.getAllOrderByStatus(status), HttpStatus.OK);
+    }
+
+    @PostMapping("/oder")
+    public ResponseEntity<Order> getAllOrders(@RequestBody Order order)  {
+        Date date = new Date();
+        order.setDateOfOrder(date);
+        order.setStatusOrder(1);
+        return new ResponseEntity<>(orderService.save(order), HttpStatus.OK);
     }
 
 }
