@@ -4,7 +4,6 @@ import com.be_casemd6.model.Provider;
 import com.be_casemd6.repo.IProviderRepo;
 import com.be_casemd6.service.IProviderService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -30,6 +29,24 @@ public class ProviderService implements IProviderService {
         List<Provider> providers = iProviderRepo.getProviderTopView();
         List<Provider> providerList = new ArrayList<>();
         for (int i = 0; i < 8; i++) {
+            providerList.add(providers.get(i));
+        }
+        return providerList;
+    }
+    @Override
+    public List<Provider> getBoyProviderTopView() {
+        List<Provider> providers = iProviderRepo.getBoyProviderTopView();
+        List<Provider> providerList = new ArrayList<>();
+        for (int i = 0; i < 4; i++) {
+            providerList.add(providers.get(i));
+        }
+        return providerList;
+    }
+    @Override
+    public List<Provider> getGirlProviderTopView() {
+        List<Provider> providers = iProviderRepo.getGirlProviderTopView();
+        List<Provider> providerList = new ArrayList<>();
+        for (int i = 0; i < 4; i++) {
             providerList.add(providers.get(i));
         }
         return providerList;
