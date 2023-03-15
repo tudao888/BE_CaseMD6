@@ -19,35 +19,51 @@ public class ProviderController {
     @Autowired
     IAccountService iAccountService;
 
-//    hiển thị dịch vụ của tài khoản là nhà cung cấp
+    //    hiển thị dịch vụ của tài khoản là nhà cung cấp
     @GetMapping
     public ResponseEntity<List<Provider>> getAllProviderAcc() {
         return new ResponseEntity<>(iProviderService.getAllProviderAcc(), HttpStatus.OK);
     }
-//    hiển thị 8 nhà cung cấp có lượt view cao nhất
+
+    //    hiển thị 8 nhà cung cấp có lượt view cao nhất
     @GetMapping("/top/view")
     public ResponseEntity<List<Provider>> getProviderTopView() {
-        return new ResponseEntity<>(iProviderService.getProviderTopView(),HttpStatus.OK);
+        return new ResponseEntity<>(iProviderService.getProviderTopView(), HttpStatus.OK);
     }
+
+    //    hiển thị các nhà cung cấp nam top 4 view hot
+    @GetMapping("/top/view/boy")
+    public ResponseEntity<List<Provider>> getBoyProviderTopView() {
+        return new ResponseEntity<>(iProviderService.getBoyProviderTopView(), HttpStatus.OK);
+    }
+    //    hiển thị các nhà cung cấp nữ top 4 view hot
+    @GetMapping("/top/view/girl")
+    public ResponseEntity<List<Provider>> getGirlProviderTopView() {
+        return new ResponseEntity<>(iProviderService.getGirlProviderTopView(),HttpStatus.OK);
+    }
+
     @GetMapping("/{id}")
     public ResponseEntity<Provider> findProviderByIdAndIncreaseView(@PathVariable Integer id) {
-        return new ResponseEntity<>(iProviderService.findProviderById(id),HttpStatus.OK);
+        return new ResponseEntity<>(iProviderService.findProviderById(id), HttpStatus.OK);
     }
+
     @PostMapping("/view/{id}")
     public ResponseEntity<Provider> increaseViewProviderById(@PathVariable Integer id) {
-        return new ResponseEntity<>(iProviderService.increaseViewProviderById(id),HttpStatus.OK);
+        return new ResponseEntity<>(iProviderService.increaseViewProviderById(id), HttpStatus.OK);
     }
+
     @PutMapping("/status/{id}")
     public ResponseEntity<Provider> changeStatusProvider(@PathVariable Integer id) {
-        return new ResponseEntity<>(iProviderService.changeStatusProvider(id),HttpStatus.OK);
+        return new ResponseEntity<>(iProviderService.changeStatusProvider(id), HttpStatus.OK);
     }
+
     @GetMapping("{username}")
-    public ResponseEntity<Provider> findProvider(@PathVariable String username){
-        return new ResponseEntity<>(iProviderService.findProviderByAccountUsername(username),HttpStatus.OK);
+    public ResponseEntity<Provider> findProvider(@PathVariable String username) {
+        return new ResponseEntity<>(iProviderService.findProviderByAccountUsername(username), HttpStatus.OK);
     }
 
     @PostMapping()
-    public ResponseEntity<Provider> createProvider(@RequestBody Provider provider){
-        return new ResponseEntity<>(iProviderService.save(provider),HttpStatus.OK);
+    public ResponseEntity<Provider> createProvider(@RequestBody Provider provider) {
+        return new ResponseEntity<>(iProviderService.save(provider), HttpStatus.OK);
     }
 }
