@@ -38,6 +38,7 @@ public class AccountController {
         account.setDateOfRegister(new Date().toString());
         account.setStatusAccount(1);
         account.setWallet(0.0);
+        account.setAvatar("https://phongreviews.com/wp-content/uploads/2022/11/avatar-facebook-mac-dinh-15.jpg");
         EmailDetails emailDetails = new EmailDetails(account.getEmail());
         emailService.sendSimpleMail(emailDetails, account.getUsername(), account.getPassword());
         iAccountService.createAccount(account);
