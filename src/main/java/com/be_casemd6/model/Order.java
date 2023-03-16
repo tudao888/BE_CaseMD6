@@ -15,6 +15,8 @@ public class Order {
     private Integer orderTime;
     private Double total;
     private String dateOfOrder;
+    private String startOrder;
+    private String endOrder;
     @ManyToOne
     private Account account;
     @ManyToOne
