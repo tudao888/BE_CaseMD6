@@ -16,4 +16,5 @@ public class Provider {
     private Integer view;
     @ManyToOne
     private Account account;
+
 }

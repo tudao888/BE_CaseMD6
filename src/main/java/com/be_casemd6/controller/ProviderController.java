@@ -10,7 +10,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 @RestController
 @RequestMapping("/providers")
@@ -49,6 +52,22 @@ public class ProviderController {
     @GetMapping("{username}")
     public ResponseEntity<Provider> findProvider(@PathVariable String username){
         return new ResponseEntity<>(iProviderService.findProviderByAccountUsername(username),HttpStatus.OK);
+    }
+    @GetMapping("/top/sell/provider")
+    public ResponseEntity<Set<Provider>> getProvidersByOrderStatus5() {
+        Map<Provider, Integer> map = iProviderService.getProvidersByOrderStatus5();
+        Set<Provider> set = map.keySet();
+        return new ResponseEntity<>(set,HttpStatus.OK);
+    }
+    @GetMapping("/top/sell/provider/luotthue")
+    public ResponseEntity<List<Integer>> getLuotThue() {
+        Map<Provider, Integer> map = iProviderService.getProvidersByOrderStatus5();
+        Set<Provider> set = map.keySet();
+        List<Integer> luotthue = new ArrayList<>();
+        for (Provider provider : set) {
+            luotthue.add(map.get(provider));
+        }
+        return new ResponseEntity<>(luotthue,HttpStatus.OK);
     }
 
     @PostMapping()
