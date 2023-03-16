@@ -9,7 +9,11 @@ public interface IOrderService {
     List<Order> getAllOrders();
 
     List<Order> getAllOrderByStatus(int status);
+
+    Order createOrder(Order order);
+
     List<Order> getAllBillOfProviderById(int idProvider);
 
     Order findOrderById(int id);
+
 }

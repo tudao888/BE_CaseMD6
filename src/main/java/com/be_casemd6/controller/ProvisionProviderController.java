@@ -21,13 +21,17 @@ public class ProvisionProviderController {
         return new ResponseEntity<>(iProvisionProviderService.getAllProvisionProvider(), HttpStatus.OK);
     }
     @GetMapping("/{id}")
-    public ResponseEntity<List<ProvisionProvider>> getAllByUsername(@PathVariable Integer id){
+    public ResponseEntity<List<ProvisionProvider>> getAllProvisionByProviderById(@PathVariable Integer id){
         return new ResponseEntity<>(iProvisionProviderService.getAllProvisionByProviderId(id),HttpStatus.OK);
     }
 
     @PostMapping()
     public ResponseEntity<ProvisionProvider> createProvisionProvider(ProvisionProvider provider) {
         return new ResponseEntity<>(iProvisionProviderService.save(provider), HttpStatus.OK);
+    }
+    @GetMapping ("/a/getStatus/{providerId}")
+    public ResponseEntity<List<ProvisionProvider>> findProvisionProviderByIdAndStatusServiceProvider(@PathVariable Integer providerId){
+        return new ResponseEntity<>(iProvisionProviderService.findProvisionProviderByProviderIdAndStatusServiceProvider(providerId),HttpStatus.OK);
     }
 
 }

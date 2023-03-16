@@ -29,5 +29,11 @@ public class ProvisionProviderService implements IProvisionProviderService {
         return iProvisionProviderRepo.save(provider);
     }
 
+    @Override
+    public List<ProvisionProvider> findProvisionProviderByProviderIdAndStatusServiceProvider(Integer providerId) {
+        return iProvisionProviderRepo.findProvisionProviderByProviderIdAndStatusServiceProvider(providerId);
+    }
+
+
 
 }

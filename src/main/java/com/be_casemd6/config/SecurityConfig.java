@@ -36,7 +36,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().ignoringAntMatchers("/**"); // mở chặn phương thức của restfull;
 
-        http.authorizeRequests().antMatchers( "/login", "/register/**","/admin/**","/**").permitAll()
+        http.authorizeRequests().antMatchers( "/login", "/register/**","/admin/**","/**","/providers/**").permitAll()
                 .anyRequest().authenticated()
 //                .and().authorizeRequests().antMatchers("/admin").hasRole("ADMIN")
                 .and().csrf().disable();

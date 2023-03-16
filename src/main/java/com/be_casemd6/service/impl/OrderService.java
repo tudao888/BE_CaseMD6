@@ -26,6 +26,12 @@ public class OrderService implements IOrderService {
     }
 
     @Override
+
+    public Order createOrder(Order order) {
+        return iOrderRepo.save(order);
+    }
+
+
     public List<Order> getAllBillOfProviderById(int idProvider) {
         return iOrderRepo.getAllBillOfProviderById(idProvider);
     }
@@ -34,5 +40,6 @@ public class OrderService implements IOrderService {
     public Order findOrderById(int id) {
         return iOrderRepo.findById(id).get();
     }
+
 
 }
