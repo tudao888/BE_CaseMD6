@@ -24,4 +24,10 @@ public class OrderService implements IOrderService {
         return iOrderRepo.getAllOrderByStatus(status);
     }
 
+    @Override
+    public Order createOrder(Order order) {
+        return iOrderRepo.save(order);
+    }
+
+
 }

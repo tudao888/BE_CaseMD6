@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -25,6 +26,12 @@ public class OrderController {
     @GetMapping("/{statusOrder}")
     public ResponseEntity<List<Order>> getAllOrderByStatus(@PathVariable int statusOrder) {
         return new ResponseEntity<>(orderService.getAllOrderByStatus(statusOrder), HttpStatus.OK);
+    }
+    @PostMapping("/create")
+    public ResponseEntity<Order> createOrder(@RequestBody Order order) {
+        String dateOfOrder = new Date().toString();
+        order.setDateOfOrder(dateOfOrder);
+        return new ResponseEntity<Order>(orderService.createOrder(order),HttpStatus.OK);
     }
 
 }

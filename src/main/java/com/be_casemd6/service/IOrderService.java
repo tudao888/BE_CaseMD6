@@ -10,4 +10,5 @@ public interface IOrderService {
     List<Order> getAllOrders();
 
     List<Order> getAllOrderByStatus(int status);
+    Order createOrder(Order order);
 }

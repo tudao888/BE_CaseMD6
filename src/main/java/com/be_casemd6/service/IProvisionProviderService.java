@@ -10,4 +10,6 @@ public interface IProvisionProviderService {
     List<ProvisionProvider> getAllProvisionByProviderId(Integer id);
 
     ProvisionProvider save(ProvisionProvider provider);
+    List<ProvisionProvider> findProvisionProviderByProviderIdAndStatusServiceProvider(Integer providerId);
+
 }
