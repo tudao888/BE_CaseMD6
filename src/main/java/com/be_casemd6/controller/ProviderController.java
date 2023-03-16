@@ -53,6 +53,16 @@ public class ProviderController {
     public ResponseEntity<Provider> findProvider(@PathVariable String username){
         return new ResponseEntity<>(iProviderService.findProviderByAccountUsername(username),HttpStatus.OK);
     }
+    //    hiển thị các nhà cung cấp nam top 4 view hot
+    @GetMapping("/top/view/boy")
+    public ResponseEntity<List<Provider>> getBoyProviderTopView() {
+        return new ResponseEntity<>(iProviderService.getBoyProviderTopView(), HttpStatus.OK);
+    }
+    //    hiển thị các nhà cung cấp nữ top 4 view hot
+    @GetMapping("/top/view/girl")
+    public ResponseEntity<List<Provider>> getGirlProviderTopView() {
+        return new ResponseEntity<>(iProviderService.getGirlProviderTopView(),HttpStatus.OK);
+    }
     @GetMapping("/top/sell/provider")
     public ResponseEntity<Set<Provider>> getProvidersByOrderStatus5() {
         Map<Provider, Integer> map = iProviderService.getProvidersByOrderStatus5();
