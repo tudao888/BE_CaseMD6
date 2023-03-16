@@ -55,8 +55,16 @@ public class OrderController {
         return new ResponseEntity<>(orderService.getAllOrderByStatus(status), HttpStatus.OK);
     }
 
-    @PostMapping("/oder")
-    public ResponseEntity<Order> getAllOrders(@RequestBody Order order)  {
+    @PostMapping("/m/oder")
+    public ResponseEntity<Order> Order(@RequestBody Order order)  {
+        Date date = new Date();
+        order.setDateOfOrder(date);
+        order.setStatusOrder(2);
+        return new ResponseEntity<>(orderService.save(order), HttpStatus.OK);
+    }
+
+    @PostMapping("/m/waitingorder")
+    public ResponseEntity<Order> waitingOrder(@RequestBody Order order)  {
         Date date = new Date();
         order.setDateOfOrder(date);
         order.setStatusOrder(1);
