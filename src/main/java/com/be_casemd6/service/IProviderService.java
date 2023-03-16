@@ -5,6 +5,7 @@ import com.be_casemd6.model.Provider;
 import org.aspectj.apache.bcel.classfile.Module;
 
 import java.util.List;
+import java.util.Map;
 
 public interface IProviderService {
     Provider createProvider (Provider provider);
@@ -25,5 +26,10 @@ public interface IProviderService {
     Provider changeStatusProvider(Integer id);
 
     Provider save(Provider provider);
+
     Provider findProviderByAccount_Id(Integer accountId);
+
+
+    Map<Provider,Integer> getProvidersByOrderStatus5();
+
 }
