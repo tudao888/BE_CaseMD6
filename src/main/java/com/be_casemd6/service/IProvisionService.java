@@ -15,4 +15,5 @@ public interface IProvisionService {
     List<Provision> findAllBasicProvision();
     List<Provision> findAllFreeProvision();
     List<Provision> findAllExtendProvision();
+    Provision findProvisionById(Integer id);
 }

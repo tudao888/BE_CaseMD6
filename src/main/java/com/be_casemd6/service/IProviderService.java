@@ -25,4 +25,5 @@ public interface IProviderService {
     Provider changeStatusProvider(Integer id);
 
     Provider save(Provider provider);
+    Provider findProviderByAccount_Id(Integer accountId);
 }

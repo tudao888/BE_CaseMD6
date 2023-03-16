@@ -80,6 +80,11 @@ public class ProviderService implements IProviderService {
     }
 
     @Override
+    public Provider findProviderByAccount_Id(Integer accountId) {
+        return iProviderRepo.findProviderByAccount_Id(accountId);
+    }
+
+    @Override
     public Provider findProviderByAccountUsername(String username) {
         return iProviderRepo.findProviderByAccount_Username(username);
     }
