@@ -89,4 +89,9 @@ public class ProviderController {
     public ResponseEntity<List<Order>> getProviderById(@PathVariable int idProvider){
         return new ResponseEntity<>(iOrderService.getAllBillOfProviderById(idProvider),HttpStatus.OK);
     }
+
+    @GetMapping("/user/getOrdersByStatus/{idProvider}/{statusOrder}")
+    public ResponseEntity<List<Order>> getAllBillOfProviderAndStartOrder(@PathVariable int idProvider, @PathVariable int statusOrder){
+        return new ResponseEntity<>(iOrderService.getAllBillOfProviderAndStartOrder(idProvider, statusOrder),HttpStatus.OK);
+    }
 }

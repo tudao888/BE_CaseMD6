@@ -38,6 +38,22 @@ public class OrderService implements IOrderService {
     }
 
     @Override
+    public List<Order> getAllBillOfAccountById(int idAccount) {
+        return iOrderRepo.getAllBillOfAccountById(idAccount);
+    }
+
+    @Override
+    public List<Order> getAllBillOfAccountByIdAndStartOrder(int idAccount, int statusOrder) {
+        return iOrderRepo.getAllBillOfAccountByIdAndStartOrder(idAccount, statusOrder);
+    }
+
+    @Override
+    public List<Order> getAllBillOfProviderAndStartOrder(int idProvider, int statusOrder) {
+        return iOrderRepo.getAllBillOfProviderAndStartOrder(idProvider, statusOrder);
+    }
+
+
+    @Override
     public Order findOrderById(int id) {
         return iOrderRepo.findById(id).get();
     }
