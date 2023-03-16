@@ -13,9 +13,9 @@ public interface IProviderRepo extends PagingAndSortingRepository<Provider,Integ
     @Query(nativeQuery = true, value = "SELECT * FROM provider order by view desc")
     List<Provider> getProviderTopView();
 
-    @Query(nativeQuery = true, value = "select * from account join provider on account.id = provider.account_id where account.gender = 'Nam' order by view desc")
+    @Query(nativeQuery = true, value = "select provider.* from account join provider on account.id = provider.account_id where account.gender = 'Nam' order by view desc")
     List<Provider> getBoyProviderTopView();
-    @Query(nativeQuery = true, value = "select * from account join provider on account.id = provider.account_id where account.gender = 'Nữ' order by view desc")
+    @Query(nativeQuery = true, value = "select provider.* from account join provider on account.id = provider.account_id where account.gender = 'Nữ' order by view desc")
     List<Provider> getGirlProviderTopView();
     Provider findProviderByAccount_Username(String username);
 }
