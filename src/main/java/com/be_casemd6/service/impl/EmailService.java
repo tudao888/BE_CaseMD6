@@ -16,14 +16,14 @@ public class EmailService implements IEmailService {
     @Value("${spring.mail.username}") private String sender;
 
     @Override
-    public String sendSimpleMail(EmailDetails details, String username,String password) {
+    public String sendSimpleMail(EmailDetails details, String subject,String text) {
         try {
             SimpleMailMessage mailMessage
                     = new SimpleMailMessage();
             mailMessage.setFrom(sender);
             mailMessage.setTo(details.getRecipient());
-            mailMessage.setText("Chúc mừng bạn "+username+" đã đăng kí tài khoản thành công với mật khẩu là "+password);
-            mailMessage.setSubject("Phản hồi đăng kí tài khoản");
+            mailMessage.setText(text);
+            mailMessage.setSubject(subject);
             javaMailSender.send(mailMessage);
             return "Mail Sent Successfully...";
         }

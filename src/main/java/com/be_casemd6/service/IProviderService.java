@@ -10,6 +10,7 @@ import java.util.Map;
 public interface IProviderService {
     Provider createProvider (Provider provider);
     List<Provider> getAllProviderAcc();
+    List<Provider> getAllProvider();
     Provider findProviderByAccountUsername(String username);
 
     List<Provider> getProviderTopView();

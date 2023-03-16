@@ -1,9 +1,6 @@
 package com.be_casemd6.controller;
 
-import com.be_casemd6.model.Order;
-import com.be_casemd6.model.Provider;
-import com.be_casemd6.model.Provision;
-import com.be_casemd6.model.ProvisionProvider;
+import com.be_casemd6.model.*;
 import com.be_casemd6.service.*;
 import com.be_casemd6.service.impl.ProvisionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +25,8 @@ public class ProviderController {
     IProvisionProviderService iProvisionProviderService;
     @Autowired
     ProvisionService provisionService;
+    @Autowired
+    private IEmailService emailService;
     @Autowired
     IOrderService iOrderService;
 
@@ -103,6 +102,15 @@ public class ProviderController {
         }
         return new ResponseEntity<>(HttpStatus.OK);
     }
+    @PostMapping("/a/acceptProvider/sendEmail")
+
+    public ResponseEntity<Provider> acceptProvider(@RequestBody Provider provider){
+        EmailDetails emailDetails = new EmailDetails(provider.getAccount().getEmail());
+        String subject="Phản hồi đăng kí nhà cung cấp";
+        String text="Chúc mừng "+provider.getAccount().getUsername()+" đã trở  thành nhà cung cấp dịch vụ của chúng tôi!";
+        emailService.sendSimpleMail(emailDetails, subject, text);
+        return new ResponseEntity<>(iProviderService.save(provider),HttpStatus.OK);
+    }
 
     @GetMapping("/orders/{idProvider}")
     public ResponseEntity<List<Order>> getProviderById(@PathVariable int idProvider) {
@@ -117,5 +125,9 @@ public class ProviderController {
     @GetMapping("/user/getOrdersByStatus/{idProvider}/{statusOrder}")
     public ResponseEntity<List<Order>> getAllBillOfProviderAndStartOrder(@PathVariable int idProvider, @PathVariable int statusOrder){
         return new ResponseEntity<>(iOrderService.getAllBillOfProviderAndStartOrder(idProvider, statusOrder),HttpStatus.OK);
+    }
+    @GetMapping("/t/gatAllProviders")
+    public ResponseEntity<List<Provider>> getAllProviersA(){
+        return new ResponseEntity<>(iProviderService.getAllProvider(),HttpStatus.OK);
     }
 }
