@@ -27,5 +27,9 @@ public interface IProviderService {
 
     Provider save(Provider provider);
 
+    Provider findProviderByAccount_Id(Integer accountId);
+
+
     Map<Provider,Integer> getProvidersByOrderStatus5();
+
 }
