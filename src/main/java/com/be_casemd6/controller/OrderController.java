@@ -47,4 +47,13 @@ public class OrderController {
         }
         return new ResponseEntity<>(iOrderRepo.save(order), HttpStatus.OK);
     }
+
+    @PostMapping("/changeToCompleted/{id}")
+    public ResponseEntity<Order> changeToCompleted(@PathVariable int id) {
+        Order order = orderService.findOrderById(id);
+        if (order.getStatusOrder() == 3) {
+            order.setStatusOrder(5);
+        }
+        return new ResponseEntity<>(iOrderRepo.save(order), HttpStatus.OK);
+    }
 }

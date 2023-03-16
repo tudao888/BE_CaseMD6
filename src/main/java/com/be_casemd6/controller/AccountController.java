@@ -3,10 +3,8 @@ package com.be_casemd6.controller;
 import com.be_casemd6.model.*;
 
 import com.be_casemd6.repo.IImageRepo;
-import com.be_casemd6.service.IAccountService;
-import com.be_casemd6.service.IEmailService;
-import com.be_casemd6.service.IImageService;
-import com.be_casemd6.service.IProviderService;
+import com.be_casemd6.repo.IOrderRepo;
+import com.be_casemd6.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,6 +25,8 @@ public class AccountController {
 
     @Autowired
     private IImageService iImageService;
+    @Autowired
+    private IOrderService iOrderService;
 
     @PostMapping("/register")
     public ResponseEntity<Account> createAccount(@RequestBody Account account) {
@@ -111,4 +111,15 @@ public class AccountController {
     public ResponseEntity<Image> saveImage(@RequestBody Image image){
         return new ResponseEntity<>(iImageService.save(image),HttpStatus.OK);
     }
+    @GetMapping("/user/getOrders/{idAccount}")
+    public ResponseEntity<List<Order>> getAllBillOfAccountById(@PathVariable int idAccount){
+        return new ResponseEntity<>(iOrderService.getAllBillOfAccountById(idAccount),HttpStatus.OK);
+    }
+
+    @GetMapping("/user/getOrdersByStatus/{idAccount}/{statusOrder}")
+    public ResponseEntity<List<Order>> getAllBillOfAccountByIdAndStartOrder(@PathVariable int idAccount, @PathVariable int statusOrder){
+        return new ResponseEntity<>(iOrderService.getAllBillOfAccountByIdAndStartOrder(idAccount, statusOrder),HttpStatus.OK);
+    }
+
+
 }
