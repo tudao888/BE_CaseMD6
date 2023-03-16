@@ -42,6 +42,7 @@ public class OrderController {
         Order order = orderService.findOrderById(id);
         if (order.getStatusOrder() == 2) {
             order.setStatusOrder(3);
+
         }
         return new ResponseEntity<>(iOrderRepo.save(order), HttpStatus.OK);
     }
@@ -51,6 +52,9 @@ public class OrderController {
         Order order = orderService.findOrderById(id);
         if (order.getStatusOrder() == 2) {
             order.setStatusOrder(4);
+
+
+
         }
         return new ResponseEntity<>(iOrderRepo.save(order), HttpStatus.OK);
     }
@@ -60,6 +64,12 @@ public class OrderController {
         Order order = orderService.findOrderById(id);
         if (order.getStatusOrder() == 3) {
             order.setStatusOrder(5);
+            Double total = order.getTotal();
+            Double walletAccount = order.getAccount().getWallet();
+            order.getAccount().setWallet(walletAccount - total);
+
+            Double walletProvider = order.getProvider().getAccount().getWallet();
+            order.getProvider().getAccount().setWallet(walletProvider + total);
         }
         return new ResponseEntity<>(iOrderRepo.save(order), HttpStatus.OK);
     }
