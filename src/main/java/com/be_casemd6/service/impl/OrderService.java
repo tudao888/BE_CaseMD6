@@ -19,14 +19,26 @@ public class OrderService implements IOrderService {
         return iOrderRepo.findAll();
     }
 
+
     @Override
     public List<Order> getAllOrderByStatus(int status) {
         return iOrderRepo.getAllOrderByStatus(status);
     }
 
     @Override
+
     public Order createOrder(Order order) {
         return iOrderRepo.save(order);
+    }
+
+
+    public List<Order> getAllBillOfProviderById(int idProvider) {
+        return iOrderRepo.getAllBillOfProviderById(idProvider);
+    }
+
+    @Override
+    public Order findOrderById(int id) {
+        return iOrderRepo.findById(id).get();
     }
 
 
