@@ -62,6 +62,10 @@ public class AccountController {
     public ResponseEntity<List<Account>> getAllProvider() {
         return new ResponseEntity<>(iAccountService.getAllProvider(), HttpStatus.OK);
     }
+    @GetMapping("/register/findAccountByPhoneNumber/{phoneNumber}")
+    public ResponseEntity<Account> findAccountByPhoneNumber(@PathVariable String phoneNumber) {
+        return new ResponseEntity<>(iAccountService.findAccountByPhoneNumber(phoneNumber),HttpStatus.OK);
+    }
 
     @GetMapping("/register/findAccountByUsername/{username}")
     public ResponseEntity<Account> findAccountByUsername(@PathVariable String username) {
