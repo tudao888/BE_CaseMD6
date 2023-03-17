@@ -6,10 +6,13 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 
 import java.util.List;
 
-public interface IAccountRepo extends PagingAndSortingRepository<Account,Integer> {
+public interface IAccountRepo extends PagingAndSortingRepository<Account, Integer> {
 
     Account findAccountByUsername(String username);
+
     Account findAccountByEmail(String email);
+
+    Account findAccountByPhoneNumber(String phoneNumber);
 
     List<Account> findAllByFullNameContaining(String fullname);
 }
