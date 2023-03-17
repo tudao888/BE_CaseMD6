@@ -2,6 +2,7 @@ package com.be_casemd6.service;
 
 
 import com.be_casemd6.model.Account;
+import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 
@@ -14,8 +15,12 @@ public interface IAccountService {
 
     List<Account> findAllByFullNameContaining(String fullname);
 
+    Account findAccountByPhoneNumber(String phoneNumber);
+
     Account findAccountByUsername(String username);
     Account findAccountByEmail(String username);
+
+    Account findAccountByPhoneNumber(String phoneNumber);
 
     Account createAccount(Account account);
 

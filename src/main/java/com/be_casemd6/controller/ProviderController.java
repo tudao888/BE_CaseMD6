@@ -2,9 +2,10 @@ package com.be_casemd6.controller;
 
 import com.be_casemd6.model.Order;
 import com.be_casemd6.model.Provider;
-import com.be_casemd6.service.IAccountService;
-import com.be_casemd6.service.IOrderService;
-import com.be_casemd6.service.IProviderService;
+import com.be_casemd6.model.Provision;
+import com.be_casemd6.model.ProvisionProvider;
+import com.be_casemd6.service.*;
+import com.be_casemd6.service.impl.ProvisionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -28,16 +29,22 @@ public class ProviderController {
     @Autowired
     ProvisionService provisionService;
     @Autowired
+    private IEmailService emailService;
+    @Autowired
     IOrderService iOrderService;
 
-//    hiển thị dịch vụ của tài khoản là nhà cung cấp
+    //    hiển thị dịch vụ của tài khoản là nhà cung cấp
     @GetMapping
     public ResponseEntity<List<Provider>> getAllProviderAcc() {
         return new ResponseEntity<>(iProviderService.getAllProviderAcc(), HttpStatus.OK);
     }
-//    hiển thị 8 nhà cung cấp có lượt view cao nhất
+
+    //    hiển thị 8 nhà cung cấp có lượt view cao nhất
     @GetMapping("/top/view")
     public ResponseEntity<List<Provider>> getProviderTopView() {
+<<<<<<<<< Temporary merge branch 1
+        return new ResponseEntity<>(iProviderService.getProviderTopView(), HttpStatus.OK);
+=========
         return new ResponseEntity<>(iProviderService.getProviderTopView(),HttpStatus.OK);
     }
     @GetMapping("/viewer/{id}")
@@ -55,6 +62,7 @@ public class ProviderController {
     @GetMapping("{username}")
     public ResponseEntity<Provider> findProvider(@PathVariable String username){
         return new ResponseEntity<>(iProviderService.findProviderByAccountUsername(username),HttpStatus.OK);
+>>>>>>>>> Temporary merge branch 2
     }
     //    hiển thị các nhà cung cấp nam top 4 view hot
     @GetMapping("/top/view/boy")
@@ -117,10 +125,19 @@ public class ProviderController {
         }
         return new ResponseEntity<>(HttpStatus.OK);
     }
+    @PostMapping("/a/acceptProvider/sendEmail")
+
+    public ResponseEntity<Provider> acceptProvider(@RequestBody Provider provider){
+        EmailDetails emailDetails = new EmailDetails(provider.getAccount().getEmail());
+        String subject="Phản hồi đăng kí nhà cung cấp";
+        String text="Chúc mừng "+provider.getAccount().getUsername()+" đã trở  thành nhà cung cấp dịch vụ của chúng tôi!";
+        emailService.sendSimpleMail(emailDetails, subject, text);
+        return new ResponseEntity<>(iProviderService.save(provider),HttpStatus.OK);
+    }
 
     @GetMapping("/orders/{idProvider}")
-    public ResponseEntity<List<Order>> getProviderById(@PathVariable int idProvider){
-        return new ResponseEntity<>(iOrderService.getAllBillOfProviderById(idProvider),HttpStatus.OK);
+    public ResponseEntity<List<Order>> getProviderById(@PathVariable int idProvider) {
+        return new ResponseEntity<>(iOrderService.getAllBillOfProviderById(idProvider), HttpStatus.OK);
     }
 
     @GetMapping("/a/getProviderByAccountId/{accountId}")
@@ -131,5 +148,9 @@ public class ProviderController {
     @GetMapping("/user/getOrdersByStatus/{idProvider}/{statusOrder}")
     public ResponseEntity<List<Order>> getAllBillOfProviderAndStartOrder(@PathVariable int idProvider, @PathVariable int statusOrder){
         return new ResponseEntity<>(iOrderService.getAllBillOfProviderAndStartOrder(idProvider, statusOrder),HttpStatus.OK);
+    }
+    @GetMapping("/t/gatAllProviders")
+    public ResponseEntity<List<Provider>> getAllProviersA(){
+        return new ResponseEntity<>(iProviderService.getAllProvider(),HttpStatus.OK);
     }
 }
