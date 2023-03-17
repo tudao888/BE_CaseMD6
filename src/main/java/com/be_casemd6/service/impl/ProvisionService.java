@@ -36,5 +36,10 @@ public class ProvisionService implements IProvisionService {
         return iProvisionRepo.findAllExtendProvision();
     }
 
+    @Override
+    public Provision findProvisionById(Integer id) {
+        return iProvisionRepo.findById(id).get();
+    }
+
 
 }
