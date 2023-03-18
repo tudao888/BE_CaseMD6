@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.List;
 
 public interface IAccountService {
-    List<Account> findAllAccounts() ;
+    List<Account> findAllAccounts();
 
     Account findAccountById(int id);
 
@@ -17,8 +17,10 @@ public interface IAccountService {
 
 
     Account findAccountByUsername(String username);
+
     Account findAccountByEmail(String username);
 
+    Account findAccountByPhoneNumber(String phoneNumber);
 
     Account createAccount(Account account);
 

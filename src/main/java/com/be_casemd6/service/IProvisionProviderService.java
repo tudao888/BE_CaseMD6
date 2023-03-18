@@ -12,4 +12,5 @@ public interface IProvisionProviderService {
     ProvisionProvider save(ProvisionProvider provisionProvider);
     List<ProvisionProvider> findProvisionProviderByProviderId(Integer providerId);
     ProvisionProvider findById(Integer id);
+    List<ProvisionProvider> findProvisionProviderByProviderIdAndStatus1(Integer id);
 }

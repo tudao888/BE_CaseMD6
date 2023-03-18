@@ -11,4 +11,7 @@ public interface IProvisionProviderRepo extends PagingAndSortingRepository<Provi
        List<ProvisionProvider> findAllByProviderId(Integer id);
        @Query(nativeQuery = true, value = "SELECT * FROM provision_provider WHERE provision_provider.provider_id = :provider_id")
        List<ProvisionProvider> findProvisionProviderByProviderId(@Param("provider_id") int provider_id);
+       @Query(nativeQuery = true, value = "SELECT * FROM provision_provider WHERE provision_provider.provider_id = :provider_id and provision_provider.status_service_provider=1")
+       List<ProvisionProvider> findProvisionProviderByProviderIdAndStatus1(@Param("provider_id") int provider_id);
+
 }

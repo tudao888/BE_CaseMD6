@@ -10,6 +10,7 @@ public class Image {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    private Integer statusImg;
     private String url;
     @ManyToOne
     private Account account;

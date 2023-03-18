@@ -1,9 +1,6 @@
 package com.be_casemd6.controller;
 
-import com.be_casemd6.model.Order;
-import com.be_casemd6.model.Provider;
-import com.be_casemd6.model.Provision;
-import com.be_casemd6.model.ProvisionProvider;
+import com.be_casemd6.model.*;
 import com.be_casemd6.service.*;
 import com.be_casemd6.service.impl.ProvisionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,8 +39,8 @@ public class ProviderController {
 //    hiển thị 8 nhà cung cấp có lượt view cao nhất
     @GetMapping("/top/view")
     public ResponseEntity<List<Provider>> getProviderTopView() {
-        return new ResponseEntity<>(iProviderService.getProviderTopView(),HttpStatus.OK);
-
+        return new ResponseEntity<>(iProviderService.getProviderTopView(), HttpStatus.OK);
+    }
     //    hiển thị 12 nhà cung cấp mới
     @GetMapping("/newProviders")
     public ResponseEntity<List<Provider>> getNewProviders() {
@@ -51,10 +48,7 @@ public class ProviderController {
     }
 
     //    hiển thị 8 nhà cung cấp có lượt view cao nhất
-    @GetMapping("/top/view")
-    public ResponseEntity<List<Provider>> getProviderTopView() {
-        return new ResponseEntity<>(iProviderService.getProviderTopView(), HttpStatus.OK);
-    }
+
 
     @GetMapping("/viewer/{id}")
     public ResponseEntity<Provider> findProviderByIdAndIncreaseView(@PathVariable Integer id) {
@@ -118,7 +112,7 @@ public class ProviderController {
             provisionProvider.setProvider(providerThenCreate);
             iProvisionProviderService.save(provisionProvider);
         }
-        for(int i =9;i<18;i++){
+        for(int i =9;i<21;i++){
             ProvisionProvider provisionProvider= new ProvisionProvider();
             Provision provision= provisionService.findProvisionById(i);
             provisionProvider.setStatusServiceProvider(2);

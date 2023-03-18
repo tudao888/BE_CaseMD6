@@ -2,8 +2,6 @@ package com.be_casemd6.controller;
 
 import com.be_casemd6.model.*;
 
-import com.be_casemd6.repo.IImageRepo;
-import com.be_casemd6.repo.IOrderRepo;
 import com.be_casemd6.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -23,8 +21,6 @@ public class AccountController {
     @Autowired
     private IEmailService emailService;
 
-    @Autowired
-    private IImageService iImageService;
     @Autowired
     private IOrderService iOrderService;
 
@@ -126,10 +122,6 @@ public class AccountController {
         return new ResponseEntity<Account>(iAccountService.findAccountById(id),HttpStatus.OK);
     }
 
-    @PostMapping("saveImage")
-    public ResponseEntity<Image> saveImage(@RequestBody Image image){
-        return new ResponseEntity<>(iImageService.save(image),HttpStatus.OK);
-    }
     @GetMapping("/user/getOrders/{idAccount}")
     public ResponseEntity<List<Order>> getAllBillOfAccountById(@PathVariable int idAccount){
         return new ResponseEntity<>(iOrderService.getAllBillOfAccountById(idAccount),HttpStatus.OK);
