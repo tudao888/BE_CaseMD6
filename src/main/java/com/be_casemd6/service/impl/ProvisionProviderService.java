@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-git public class ProvisionProviderService implements IProvisionProviderService {
+ public class ProvisionProviderService implements IProvisionProviderService {
     @Autowired
     IProvisionProviderRepo iProvisionProviderRepo;
 
@@ -37,6 +37,11 @@ git public class ProvisionProviderService implements IProvisionProviderService {
     @Override
     public ProvisionProvider findById(Integer id) {
         return iProvisionProviderRepo.findById(id).get();
+    }
+
+    @Override
+    public List<ProvisionProvider> findProvisionProviderByProviderIdAndStatus1(Integer id) {
+        return iProvisionProviderRepo.findProvisionProviderByProviderIdAndStatus1(id);
     }
 
 }

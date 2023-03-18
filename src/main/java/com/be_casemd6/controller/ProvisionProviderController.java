@@ -1,6 +1,5 @@
 package com.be_casemd6.controller;
 
-import com.be_casemd6.model.Provider;
 import com.be_casemd6.model.ProvisionProvider;
 import com.be_casemd6.service.IProvisionProviderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,5 +35,9 @@ public class ProvisionProviderController {
     @GetMapping("/a/{id}")
     public ResponseEntity<ProvisionProvider> findById(@PathVariable Integer id){
         return new ResponseEntity<>(iProvisionProviderService.findById(id),HttpStatus.OK);
+    }
+    @GetMapping ("/a/getStatus1/{providerId}")
+    public ResponseEntity<List<ProvisionProvider>> findProvisionProviderByProviderIdAndStatus1(@PathVariable Integer providerId){
+        return new ResponseEntity<>(iProvisionProviderService.findProvisionProviderByProviderIdAndStatus1(providerId),HttpStatus.OK);
     }
 }
