@@ -70,31 +70,19 @@ public class ProviderController {
         return new ResponseEntity<>(luotthue,HttpStatus.OK);
     }
 
-    @GetMapping("/viewer/{id}")
-    public ResponseEntity<Provider> findProviderByIdAndIncreaseView(@PathVariable Integer id) {
-        return new ResponseEntity<>(iProviderService.findProviderById(id), HttpStatus.OK);
-    }
-
-    @PostMapping("/view/{id}")
-    public ResponseEntity<Provider> increaseViewProviderById(@PathVariable Integer id) {
-        return new ResponseEntity<>(iProviderService.increaseViewProviderById(id), HttpStatus.OK);
-    }
-
-    @PutMapping("/status/{id}")
-    public ResponseEntity<Provider> changeStatusProvider(@PathVariable Integer id) {
-        return new ResponseEntity<>(iProviderService.changeStatusProvider(id), HttpStatus.OK);
-    }
-
-    @GetMapping("{username}")
-    public ResponseEntity<Provider> findProvider(@PathVariable String username) {
-        return new ResponseEntity<>(iProviderService.findProviderByAccountUsername(username), HttpStatus.OK);
-    }
-
     @PostMapping("/a/createProviderAndService")
     public ResponseEntity<Provider> createProvider(@RequestBody Provider provider) {
         Provider providerCreate= iProviderService.save(provider);
         Provider providerThenCreate= iProviderService.findProviderByAccount_Id(providerCreate.getAccount().getId());
-        for(int i =1;i<18;i++){
+        for(int i =1;i<9;i++){
+            ProvisionProvider provisionProvider= new ProvisionProvider();
+            Provision provision= provisionService.findProvisionById(i);
+            provisionProvider.setStatusServiceProvider(1);
+            provisionProvider.setProvision(provision);
+            provisionProvider.setProvider(providerThenCreate);
+            iProvisionProviderService.save(provisionProvider);
+        }
+        for(int i =9;i<18;i++){
             ProvisionProvider provisionProvider= new ProvisionProvider();
             Provision provision= provisionService.findProvisionById(i);
             provisionProvider.setStatusServiceProvider(2);

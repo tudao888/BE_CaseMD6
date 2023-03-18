@@ -9,7 +9,7 @@ public interface IProvisionProviderService {
     List<ProvisionProvider> getAllProvisionProvider();
     List<ProvisionProvider> getAllProvisionByProviderId(Integer id);
 
-    ProvisionProvider save(ProvisionProvider provider);
-    List<ProvisionProvider> findProvisionProviderByProviderIdAndStatusServiceProvider(Integer providerId);
-
+    ProvisionProvider save(ProvisionProvider provisionProvider);
+    List<ProvisionProvider> findProvisionProviderByProviderId(Integer providerId);
+    ProvisionProvider findById(Integer id);
 }
