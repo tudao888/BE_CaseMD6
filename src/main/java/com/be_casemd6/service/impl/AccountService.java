@@ -62,10 +62,6 @@ public class AccountService implements IAccountService, UserDetailsService {
         iAccountRepo.save(account);
         return account;
     }
-    @Override
-    public Account findAccountByPhoneNumber(String phoneNumber) {
-        return iAccountRepo.findAccountByPhoneNumber(phoneNumber);
-    }
 
     @Override
     public Account findAccountByUsername(String username) {

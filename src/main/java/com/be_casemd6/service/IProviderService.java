@@ -31,6 +31,8 @@ public interface IProviderService {
     Provider findProviderByAccount_Id(Integer accountId);
 
 
+    List<Provider> getNewProviders();
+
     Map<Provider,Integer> getProvidersByOrderStatus5();
 
 }

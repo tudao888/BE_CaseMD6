@@ -63,7 +63,6 @@ public class AccountController {
         return new ResponseEntity<>(iAccountService.getAllProvider(), HttpStatus.OK);
     }
 
-
     @GetMapping("/register/findAccountByUsername/{username}")
     public ResponseEntity<Account> findAccountByUsername(@PathVariable String username) {
         return new ResponseEntity<>(iAccountService.findAccountByUsername(username), HttpStatus.OK);

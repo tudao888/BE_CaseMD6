@@ -52,9 +52,6 @@ public class OrderController {
         Order order = orderService.findOrderById(id);
         if (order.getStatusOrder() == 2) {
             order.setStatusOrder(4);
-
-
-
         }
         return new ResponseEntity<>(iOrderRepo.save(order), HttpStatus.OK);
     }
