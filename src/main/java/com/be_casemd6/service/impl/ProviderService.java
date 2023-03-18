@@ -4,7 +4,6 @@ import com.be_casemd6.model.Order;
 import com.be_casemd6.model.Provider;
 import com.be_casemd6.repo.IOrderRepo;
 import com.be_casemd6.repo.IProviderRepo;
-import com.be_casemd6.service.IEmailService;
 import com.be_casemd6.service.IProviderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -103,6 +102,10 @@ public class ProviderService implements IProviderService {
     @Override
     public Provider findProviderByAccountUsername(String username) {
         return iProviderRepo.findProviderByAccount_Username(username);
+    }
+    @Override
+    public List<Provider> getNewProviders() {
+        return iProviderRepo.get12NewProvider();
     }
 
     @Override
