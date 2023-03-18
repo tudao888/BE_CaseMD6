@@ -26,12 +26,15 @@ public class ProvisionProviderController {
     }
 
     @PostMapping()
-    public ResponseEntity<ProvisionProvider> createProvisionProvider(ProvisionProvider provider) {
-        return new ResponseEntity<>(iProvisionProviderService.save(provider), HttpStatus.OK);
+    public ResponseEntity<ProvisionProvider> createProvisionProvider(@RequestBody ProvisionProvider provisionProvider) {
+        return new ResponseEntity<>(iProvisionProviderService.save(provisionProvider), HttpStatus.OK);
     }
     @GetMapping ("/a/getStatus/{providerId}")
-    public ResponseEntity<List<ProvisionProvider>> findProvisionProviderByIdAndStatusServiceProvider(@PathVariable Integer providerId){
-        return new ResponseEntity<>(iProvisionProviderService.findProvisionProviderByProviderIdAndStatusServiceProvider(providerId),HttpStatus.OK);
+    public ResponseEntity<List<ProvisionProvider>> findProvisionProviderById(@PathVariable Integer providerId){
+        return new ResponseEntity<>(iProvisionProviderService.findProvisionProviderByProviderId(providerId),HttpStatus.OK);
     }
-
+    @GetMapping("/a/{id}")
+    public ResponseEntity<ProvisionProvider> findById(@PathVariable Integer id){
+        return new ResponseEntity<>(iProvisionProviderService.findById(id),HttpStatus.OK);
+    }
 }

@@ -44,11 +44,7 @@ public class AccountService implements IAccountService, UserDetailsService {
     public Account findAccountByEmail(String email) {
         return iAccountRepo.findAccountByEmail(email);
     }
-
-    @Override
-    public Account findAccountByPhoneNumber(String phoneNumber) {
-        return iAccountRepo.findAccountByPhoneNumber(phoneNumber);
-    }
+    
 
     @Override
     public List<Account> getAllProvider() {
