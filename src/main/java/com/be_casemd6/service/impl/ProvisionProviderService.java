@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class ProvisionProviderService implements IProvisionProviderService {
+git public class ProvisionProviderService implements IProvisionProviderService {
     @Autowired
     IProvisionProviderRepo iProvisionProviderRepo;
 
