@@ -33,7 +33,7 @@ public class AccountController {
         account.setRoles(roles);
         account.setDateOfRegister(new Date().toString());
         account.setStatusAccount(1);
-        account.setWallet(0.0);
+        account.setWallet(1000.0);
         account.setAvatar("https://phongreviews.com/wp-content/uploads/2022/11/avatar-facebook-mac-dinh-15.jpg");
         EmailDetails emailDetails = new EmailDetails(account.getEmail());
         String subject="Email phản hồi đăng kí tài khoản!";

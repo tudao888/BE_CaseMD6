@@ -41,14 +41,12 @@ public class ProviderController {
     public ResponseEntity<List<Provider>> getProviderTopView() {
         return new ResponseEntity<>(iProviderService.getProviderTopView(), HttpStatus.OK);
     }
+
     //    hiển thị 12 nhà cung cấp mới
     @GetMapping("/newProviders")
     public ResponseEntity<List<Provider>> getNewProviders() {
         return new ResponseEntity<>(iProviderService.getNewProviders(),HttpStatus.OK);
     }
-
-    //    hiển thị 8 nhà cung cấp có lượt view cao nhất
-
 
     @GetMapping("/viewer/{id}")
     public ResponseEntity<Provider> findProviderByIdAndIncreaseView(@PathVariable Integer id) {
@@ -102,6 +100,7 @@ public class ProviderController {
 
     @PostMapping("/a/createProviderAndService")
     public ResponseEntity<Provider> createProvider(@RequestBody Provider provider) {
+        provider.setView(0);
         Provider providerCreate= iProviderService.save(provider);
         Provider providerThenCreate= iProviderService.findProviderByAccount_Id(providerCreate.getAccount().getId());
         for(int i =1;i<9;i++){

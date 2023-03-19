@@ -11,6 +11,8 @@ public interface IAccountService {
 
     Account findAccountById(int id);
 
+    Account findAccountByPhoneNumber(String phoneNumber);
+
     Object save(Account account);
 
     List<Account> findAllByFullNameContaining(String fullname);
@@ -20,7 +22,6 @@ public interface IAccountService {
 
     Account findAccountByEmail(String username);
 
-    Account findAccountByPhoneNumber(String phoneNumber);
 
     Account createAccount(Account account);
 
