@@ -73,4 +73,13 @@ public class OrderController {
         }
         return new ResponseEntity<>(iOrderRepo.save(order), HttpStatus.OK);
     }
+    @GetMapping("/m/findOrderById/{id}")
+    public ResponseEntity<Order> findOrderById(@PathVariable int id){
+        return new ResponseEntity<>(orderService.findOrderById(id),HttpStatus.OK);
+    }
+
+    @GetMapping("/m/findOrderByAccountId/{idAccount}/ProviderId/{idProvider}")
+    public ResponseEntity<List<Order>> findOrderByAccountIdAndProviderId(@PathVariable int idAccount, @PathVariable int idProvider){
+        return new ResponseEntity<>(orderService.findOrderByAccountIdAndProviderId(idAccount,idProvider),HttpStatus.OK);
+    }
 }
