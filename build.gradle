@@ -30,6 +30,9 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-mail:2.7.2'
     testImplementation 'org.springframework.security:spring-security-test'
     implementation group: 'io.jsonwebtoken', name: 'jjwt', version: '0.9.1'
+    implementation 'org.springframework.boot:spring-boot-starter-websocket'
+    implementation group: 'org.springframework', name: 'spring-websocket', version: '5.3.18'
+
 
 }
 
