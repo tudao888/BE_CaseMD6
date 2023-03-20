@@ -4,6 +4,7 @@ package com.be_casemd6.service;
 import com.be_casemd6.model.Order;
 import com.be_casemd6.model.Provider;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 import java.util.Map;
@@ -24,5 +25,6 @@ public interface IOrderService {
     List<Order> getAllBillOfProviderAndStartOrder(int idProvider, int statusOrder);
 
     Order findOrderById(int id);
+    List<Order> getAllOrderOfProviderHaveStatus3(int provider_id);
 
 }

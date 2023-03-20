@@ -70,4 +70,9 @@ public class OrderController {
         }
         return new ResponseEntity<>(iOrderRepo.save(order), HttpStatus.OK);
     }
+
+    @GetMapping("/getOrdersByStatus3/{idProvider}")
+    public ResponseEntity<List<Order>> getAllOrderOfProviderHaveStatus3(@PathVariable int idProvider) {
+        return new ResponseEntity<>(orderService.getAllOrderOfProviderHaveStatus3(idProvider), HttpStatus.OK);
+    }
 }

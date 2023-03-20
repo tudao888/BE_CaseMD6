@@ -59,6 +59,11 @@ public class OrderService implements IOrderService {
         return iOrderRepo.findById(id).get();
     }
 
+    @Override
+    public List<Order> getAllOrderOfProviderHaveStatus3(int provider_id) {
+        return iOrderRepo.getAllOrderOfProviderHaveStatus3(provider_id);
+    }
+
 
     @Override
     public List<Order> findOrdersByStatus5() {

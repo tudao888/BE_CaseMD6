@@ -41,5 +41,7 @@ public interface IOrderRepo extends JpaRepository<Order, Integer> {
     @Query(nativeQuery = true, value = "SELECT * FROM order_lover WHERE order_lover.status_order = :status_order AND order_lover.account_id = :account_id")
     List<Order> getAllBillOfAccountByIdAndStartOrder(@Param("account_id") int account_id, @Param("status_order") int status_order);
 
+    @Query(nativeQuery = true, value = "SELECT * FROM order_lover WHERE order_lover.status_order = 3 AND order_lover.provider_id = :provider_id")
+    List<Order> getAllOrderOfProviderHaveStatus3(@Param("provider_id") int provider_id);
 
 }
