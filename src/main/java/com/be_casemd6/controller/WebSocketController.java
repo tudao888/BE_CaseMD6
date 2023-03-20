@@ -13,7 +13,8 @@ public class WebSocketController {
     SimpMessagingTemplate simpMessagingTemplate;
 
     @MessageMapping("/hello")
-    public void greeting(User user) throws Exception {
-        simpMessagingTemplate.convertAndSend("/topic/public", new Hello(user.getName() +" : " + user.getMessage()));
+    public void greeting(User user, int id) throws Exception {
+        id = user.getId();
+        simpMessagingTemplate.convertAndSend("/topic/public" + id, new Hello(user.getName() +" : " + user.getMessage()));
     }
 }
