@@ -1,9 +1,24 @@
 package com.be_casemd6.model;
 
 public class User {
+    public int getIdUser() {
+        return idUser;
+    }
 
+    public void setIdUser(int idUser) {
+        this.idUser = idUser;
+    }
 
-    private int id;
+    public int getIdProvider() {
+        return idProvider;
+    }
+
+    public void setIdProvider(int idProvider) {
+        this.idProvider = idProvider;
+    }
+
+    private int idUser;
+    private int idProvider;
     private String name;
     private String message;
 
@@ -25,11 +40,5 @@ public class User {
     public void setMessage(String message) {
         this.message = message;
     }
-    public int getId() {
-        return id;
-    }
 
-    public void setId(int id) {
-        this.id = id;
-    }
 }
