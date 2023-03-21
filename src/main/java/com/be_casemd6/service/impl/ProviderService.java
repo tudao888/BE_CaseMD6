@@ -20,6 +20,7 @@ public class ProviderService implements IProviderService {
 
     @Override
     public Provider createProvider(Provider provider) {
+
         iProviderRepo.save(provider);
         return provider;
     }
@@ -27,6 +28,11 @@ public class ProviderService implements IProviderService {
     @Override
     public List<Provider> getAllProviderAcc() {
         return iProviderRepo.getProviders();
+    }
+
+    @Override
+    public List<Provider> getAllProvider() {
+        return (List<Provider>) iProviderRepo.findAll();
     }
 
     @Override
@@ -90,8 +96,17 @@ public class ProviderService implements IProviderService {
     }
 
     @Override
+    public Provider findProviderByAccount_Id(Integer accountId) {
+        return iProviderRepo.findProviderByAccount_Id(accountId);
+    }
+
+    @Override
     public Provider findProviderByAccountUsername(String username) {
         return iProviderRepo.findProviderByAccount_Username(username);
+    }
+    @Override
+    public List<Provider> getNewProviders() {
+        return iProviderRepo.get12NewProvider();
     }
 
     @Override
@@ -149,5 +164,10 @@ public class ProviderService implements IProviderService {
         }
 
         return mapSort;
+    }
+
+    @Override
+    public List<Provider> findProvidersByAccount_FullNameContaining(String fullName) {
+        return iProviderRepo.findProvidersByAccount_FullNameContaining(fullName);
     }
 }

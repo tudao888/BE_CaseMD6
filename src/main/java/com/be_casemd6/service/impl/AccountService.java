@@ -11,7 +11,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -46,9 +45,15 @@ public class AccountService implements IAccountService, UserDetailsService {
         return iAccountRepo.findAccountByEmail(email);
     }
 
+
     @Override
     public List<Account> getAllProvider() {
         return (List<Account>) iAccountRepo.findAll(Sort.by(Sort.Direction.DESC, "id"));
+    }
+
+    @Override
+    public Account findAccountByPhoneNumber(String phoneNumber) {
+        return iAccountRepo.findAccountByPhoneNumber(phoneNumber);
     }
 
     @Override
@@ -57,8 +62,10 @@ public class AccountService implements IAccountService, UserDetailsService {
         return new User(account.getUsername(), account.getPassword(), account.getRoles());
     }
 
+
     @Override
     public Account createAccount(Account account) {
+        account.setStatusVip(1);
         iAccountRepo.save(account);
         return account;
     }

@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class ProvisionProviderService implements IProvisionProviderService {
+ public class ProvisionProviderService implements IProvisionProviderService {
     @Autowired
     IProvisionProviderRepo iProvisionProviderRepo;
 
@@ -25,15 +25,23 @@ public class ProvisionProviderService implements IProvisionProviderService {
     }
 
     @Override
-    public ProvisionProvider save(ProvisionProvider provider) {
-        return iProvisionProviderRepo.save(provider);
+    public ProvisionProvider save(ProvisionProvider provisionProvider) {
+        return iProvisionProviderRepo.save(provisionProvider);
     }
 
     @Override
-    public List<ProvisionProvider> findProvisionProviderByProviderIdAndStatusServiceProvider(Integer providerId) {
-        return iProvisionProviderRepo.findProvisionProviderByProviderIdAndStatusServiceProvider(providerId);
+    public List<ProvisionProvider> findProvisionProviderByProviderId(Integer providerId) {
+        return iProvisionProviderRepo.findProvisionProviderByProviderId(providerId);
     }
 
+    @Override
+    public ProvisionProvider findById(Integer id) {
+        return iProvisionProviderRepo.findById(id).get();
+    }
 
+    @Override
+    public List<ProvisionProvider> findProvisionProviderByProviderIdAndStatus1(Integer id) {
+        return iProvisionProviderRepo.findProvisionProviderByProviderIdAndStatus1(id);
+    }
 
 }
