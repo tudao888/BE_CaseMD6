@@ -21,4 +21,5 @@ public interface IProviderRepo extends PagingAndSortingRepository<Provider,Integ
     List<Provider> get12NewProvider();
     Provider findProviderByAccount_Username(String username);
     Provider findProviderByAccount_Id(Integer accountId);
+    List<Provider> findProvidersByAccount_FullNameContaining(String fullName);
 }
