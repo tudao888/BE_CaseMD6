@@ -2,7 +2,6 @@ package com.be_casemd6.controller;
 
 import com.be_casemd6.model.Account;
 import com.be_casemd6.model.Hello;
-import com.be_casemd6.model.User;
 import com.be_casemd6.model.dto.NotificationDTO;
 import com.be_casemd6.service.impl.AccountService;
 import com.be_casemd6.service.impl.NotificationService;
@@ -31,9 +30,10 @@ public class WebSocketController {
     @Autowired
     SimpMessagingTemplate simpMessagingTemplate;
 
-    @MessageMapping("/hello")
-    public void greeting(User user) throws Exception {
-        simpMessagingTemplate.convertAndSend("/topic/public", new Hello(user.getName() +" : " + user.getMessage()));
+    @MessageMapping("/createNotificationDTO")
+    public void greeting(NotificationDTO notificationDTO) throws Exception {
+        String url = "/topic/public/" + notificationDTO.getIdAccountSend();
+        simpMessagingTemplate.convertAndSend(url, new Hello(notificationDTO.getIdAccountReceive() +" : " + notificationDTO.getStatusNotification() +" : " + notificationDTO.getId_answer()));
     }
 
     @GetMapping("/notificationDTO")

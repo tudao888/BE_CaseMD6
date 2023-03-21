@@ -22,26 +22,26 @@ public class NotificationService implements INotificationService {
     private ProviderService providerService;
     @Autowired
     private INotificationRepo notificationRepo;
+
     @Override
     public List<NotificationDTO> showNotification(int account_id) {
-        List<NotificationDTO> notificationDTOS = new ArrayList<>();
-        List<Notification> notifications =  notificationRepo.showNotification(account_id);
-        for (Notification n : notifications) {
-            notificationDTOS.add(new NotificationDTO(n.getId(), n.getAccountSend().getId(), n.getAccount().getFullName(), n.getAccountSend().getAvatar(), n.getDate(), n.getStatusNotification(), n.getId_answer()));
-        }
-        return notificationDTOS;
+        return null;
     }
+//    @Override
+//    public List<NotificationDTO> showNotification(int account_id) {
+//        return
+//    }
 
-    public NotificationDTO createNewNotification(int idUser, int idProvider) {
-        Account account = accountService.findAccountById(idUser);
-        Provider provider = providerService.findProviderById(idProvider);
-        Notification notification = new Notification();
-        notification.setAccount(provider.getAccount());
-        notification.setAccountSend(account);
-        notification.setDate(LocalDate.now());
-        notification.setStatusNotification(1);
-        notificationRepo.save(notification);
-        NotificationDTO notificationDTO = new NotificationDTO(notification.getId(), notification.getAccountSend().getId(), notification.getAccountSend().getFullName(), notification.getAccountSend().getAvatar(), notification.getDate(),  notification.getStatusNotification(), notification.getId_answer());
-        return notificationDTO;
-    }
+//    public NotificationDTO createNewNotification(int idUser, int idProvider) {
+//        Account account = accountService.findAccountById(idUser);
+//        Provider provider = providerService.findProviderById(idProvider);
+//        Notification notification = new Notification();
+//        notification.setAccount(provider.getAccount());
+//        notification.setAccountSend(account);
+//        notification.setDate(LocalDate.now());
+//        notification.setStatusNotification(1);
+//        notificationRepo.save(notification);
+//        NotificationDTO notificationDTO = new NotificationDTO(notification.getId(), notification.getAccountSend().getId(), notification.getAccountSend().getFullName(), notification.getAccountSend().getAvatar(), notification.getDate(),  notification.getStatusNotification(), notification.getId_answer());
+//        return notificationDTO;
+//    }
 }

@@ -16,12 +16,15 @@ public class Notification {
 
 
     @ManyToOne
-    private Account account;
+    private Account accountSend;
 
     @ManyToOne
-    private Account accountSend;
+    private Account accountReceive;
 
     private Integer statusNotification;
 
     private Integer id_answer;
+
+    // nếu là 1 thì nội dung là gửi tin nhắn
+    // nếu là 2 thì nội dung là yêu cầu duyệt lên provider
 }
