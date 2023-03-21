@@ -35,4 +35,5 @@ public interface IProviderService {
 
     Map<Provider,Integer> getProvidersByOrderStatus5();
 
+    List<Provider> findProvidersByAccount_FullNameContaining(String fullName);
 }

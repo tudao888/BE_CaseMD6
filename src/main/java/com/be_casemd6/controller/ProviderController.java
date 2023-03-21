@@ -58,7 +58,7 @@ public class ProviderController {
         return new ResponseEntity<>(iProviderService.increaseViewProviderById(id), HttpStatus.OK);
     }
 
-    @PutMapping("/status/{id}")
+    @PostMapping("/status/{id}")
     public ResponseEntity<Provider> changeStatusProvider(@PathVariable Integer id) {
         return new ResponseEntity<>(iProviderService.changeStatusProvider(id), HttpStatus.OK);
     }

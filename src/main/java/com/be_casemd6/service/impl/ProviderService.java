@@ -165,4 +165,9 @@ public class ProviderService implements IProviderService {
 
         return mapSort;
     }
+
+    @Override
+    public List<Provider> findProvidersByAccount_FullNameContaining(String fullName) {
+        return iProviderRepo.findProvidersByAccount_FullNameContaining(fullName);
+    }
 }

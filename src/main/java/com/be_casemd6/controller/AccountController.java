@@ -24,6 +24,9 @@ public class AccountController {
     @Autowired
     private IOrderService iOrderService;
 
+    @Autowired
+    private IProviderService iProviderService;
+
     @PostMapping("/register")
     public ResponseEntity<Account> createAccount(@RequestBody Account account) {
         List<Role> roles = new ArrayList<>();
@@ -131,6 +134,12 @@ public class AccountController {
     public ResponseEntity<List<Order>> getAllBillOfAccountByIdAndStartOrder(@PathVariable int idAccount, @PathVariable int statusOrder){
         return new ResponseEntity<>(iOrderService.getAllBillOfAccountByIdAndStartOrder(idAccount, statusOrder),HttpStatus.OK);
     }
+
+    @GetMapping("/user/searchProvider/{stringSearch}")
+    public ResponseEntity<List<Provider>> findProvidersByAccount_FullNameContaining(@PathVariable String stringSearch){
+        return new ResponseEntity<>(iProviderService.findProvidersByAccount_FullNameContaining(stringSearch),HttpStatus.OK);
+    }
+
 
 
 }
