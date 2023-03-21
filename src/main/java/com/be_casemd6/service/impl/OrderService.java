@@ -59,6 +59,11 @@ public class OrderService implements IOrderService {
         return iOrderRepo.findById(id).get();
     }
 
+    @Override
+    public List<Order> findOrderByAccountIdAndProviderId(int idAccount, int idProvider) {
+        return iOrderRepo.findOrderByAccountIdAndProviderId(idAccount,idProvider);
+    }
+
 
     @Override
     public List<Order> findOrdersByStatus5() {
