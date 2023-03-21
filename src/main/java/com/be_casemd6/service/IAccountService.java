@@ -11,7 +11,6 @@ public interface IAccountService {
 
     Account findAccountById(int id);
 
-    Account findAccountByPhoneNumber(String phoneNumber);
 
     Object save(Account account);
 
@@ -26,4 +25,6 @@ public interface IAccountService {
     Account createAccount(Account account);
 
     List<Account> getAllProvider();
+
+    Account findAccountByPhoneNumber(String phoneNumber);
 }

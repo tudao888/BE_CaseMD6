@@ -45,15 +45,15 @@ public class AccountService implements IAccountService, UserDetailsService {
         return iAccountRepo.findAccountByEmail(email);
     }
 
-    @Override
-    public Account findAccountByPhoneNumber(String phoneNumber) {
-        return iAccountRepo.findAccountByPhoneNumber(phoneNumber);
-    }
-
 
     @Override
     public List<Account> getAllProvider() {
         return (List<Account>) iAccountRepo.findAll(Sort.by(Sort.Direction.DESC, "id"));
+    }
+
+    @Override
+    public Account findAccountByPhoneNumber(String phoneNumber) {
+        return iAccountRepo.findAccountByPhoneNumber(phoneNumber);
     }
 
     @Override

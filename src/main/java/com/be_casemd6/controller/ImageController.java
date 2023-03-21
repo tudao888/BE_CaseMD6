@@ -25,5 +25,9 @@ public class ImageController {
     public ResponseEntity<List<Image>> findByAccount_IdAAndStatusImg1(@PathVariable Integer accountId){
         return  new ResponseEntity<List<Image>>(imageService.findByAccount_IdAAndStatusImg1(accountId),HttpStatus.OK);
     }
+    @GetMapping("/a/2/{accountId}")
+    public ResponseEntity<List<Image>>  findByAccount_IdAAndStatusImg2(@PathVariable Integer accountId){
+        return  new ResponseEntity<List<Image>>(imageService.findByAccount_IdAAndStatusImg2(accountId),HttpStatus.OK);
+    }
 
 }

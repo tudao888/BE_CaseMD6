@@ -22,11 +22,13 @@ public class ImageService implements IImageService {
 
     @Override
     public List<Image> findByAccount_IdAAndStatusImg1(Integer accountId) {
-        List<ImageUrlDTO> ListUrl= new ArrayList<>();
-        for (Image image: iImageRepo.findByAccount_IdAAndStatusImg1(accountId)) {
-            ImageUrlDTO imageUrlDTO=new ImageUrlDTO(image.getUrl());
-            ListUrl.add(imageUrlDTO);
-        }
         return iImageRepo.findByAccount_IdAAndStatusImg1(accountId);
     }
+
+    @Override
+    public List<Image> findByAccount_IdAAndStatusImg2(Integer accountId) {
+        return iImageRepo.findByAccount_IdAAndStatusImg2(accountId);
+    }
+
+
 }
