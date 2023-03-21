@@ -1,7 +1,6 @@
 package com.be_casemd6.service.impl;
 
 import com.be_casemd6.model.Order;
-import com.be_casemd6.model.Provider;
 import com.be_casemd6.repo.IOrderRepo;
 import com.be_casemd6.service.IOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,6 +50,10 @@ public class OrderService implements IOrderService {
     @Override
     public List<Order> getAllBillOfProviderAndStartOrder(int idProvider, int statusOrder) {
         return iOrderRepo.getAllBillOfProviderAndStartOrder(idProvider, statusOrder);
+    }
+    @Override
+    public List<Order> getAllOrderOfProviderHaveStatus3(int provider_id) {
+        return iOrderRepo.getAllOrderOfProviderHaveStatus3(provider_id);
     }
 
 

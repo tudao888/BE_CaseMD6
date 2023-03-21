@@ -36,6 +36,10 @@ public class OrderController {
         order.setDateOfOrder(dateOfOrder);
         return new ResponseEntity<Order>(orderService.createOrder(order),HttpStatus.OK);
     }
+    @GetMapping("/getOrdersByStatus3/{idProvider}")
+    public ResponseEntity<List<Order>> getAllOrderOfProviderHaveStatus3(@PathVariable int idProvider) {
+        return new ResponseEntity<>(orderService.getAllOrderOfProviderHaveStatus3(idProvider), HttpStatus.OK);
+    }
 
     @PostMapping("/changeToConfirmed/{id}")
     public ResponseEntity<Order> changeToConfirmed(@PathVariable int id) {
