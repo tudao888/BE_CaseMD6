@@ -67,6 +67,11 @@ public class OrderService implements IOrderService {
         return iOrderRepo.findOrderByAccountIdAndProviderId(idAccount,idProvider);
     }
 
+    @Override
+    public void changeToReject(Integer id, String startOrder) {
+         iOrderRepo.checkAndChangeToReject(id, startOrder);
+    }
+
 
     @Override
     public List<Order> findOrdersByStatus5() {

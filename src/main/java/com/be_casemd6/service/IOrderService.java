@@ -28,5 +28,6 @@ public interface IOrderService {
     Order findOrderById(int id);
 
     List<Order>findOrderByAccountIdAndProviderId(int idAccount, int idProvider);
+    void changeToReject(Integer id,String startOrder);
 
 }
