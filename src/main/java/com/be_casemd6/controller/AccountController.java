@@ -39,8 +39,12 @@ public class AccountController {
         account.setWallet(1000.0);
         account.setAvatar("https://phongreviews.com/wp-content/uploads/2022/11/avatar-facebook-mac-dinh-15.jpg");
         EmailDetails emailDetails = new EmailDetails(account.getEmail());
-        String subject="Email phản hồi đăng kí tài khoản!";
-        String text="xin chúc mừng "+account.getUsername()+" đã đăng kí tài khoản  thành công. Hãy nhớ mật khẩu của bạn: "+account.getPassword();
+        String subject="Thư hệ thống: Website Thuê người yêu - Uy tín số 1 Việt Nam.";
+        String text= "Chúc mừng bạn đã đăng ký tài khoản thành công !"
+                + "/n" + "Tên truy cập: "+ account.getUsername()
+                + "/n" + "Mật khẩu : " + account.getPassword()
+                + "/n" + "Chúc bạn có những trải nghiệm tuyệt vời khi sử dụng dịch vụ của chúng tôi."
+                + "/n"+ "Đây là email tự động vui lòng không trả lời.";
         emailService.sendSimpleMail(emailDetails, subject, text);
         iAccountService.createAccount(account);
         return new ResponseEntity<>(account, HttpStatus.OK);
@@ -52,8 +56,10 @@ public class AccountController {
         account.setPassword(newPasswordConvert);
         iAccountService.save(account);
         EmailDetails emailDetails= new EmailDetails(account.getEmail());
-        String subject="Email thay đổi mật khẩu !";
-        String text=" Mật khẩu của "+account.getUsername()+" đã thay đổi  thành công. Hãy nhớ mật khẩu của bạn: "+account.getPassword();
+        String subject="Thư hệ thống: Website Thuê người yêu - Uy tín số 1 Việt Nam.";
+        String text="Chúc mừng bạn đã đổi mật khẩu thành công!"
+                + "/n" +"Mật khẩu mới của bạn là: " + account.getPassword()
+                + "/n" + "Đây là email tự động vui lòng không trả lời.";
         emailService.sendSimpleMail(emailDetails,subject,text);
         return new ResponseEntity<>(HttpStatus.OK);
     }
