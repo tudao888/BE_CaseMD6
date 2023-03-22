@@ -83,4 +83,10 @@ public class OrderController {
     public ResponseEntity<List<Order>> findOrderByAccountIdAndProviderId(@PathVariable int idAccount, @PathVariable int idProvider){
         return new ResponseEntity<>(orderService.findOrderByAccountIdAndProviderId(idAccount,idProvider),HttpStatus.OK);
     }
+
+    @GetMapping("/m/checkAndChangeToReject/{id}/{startOrder}")
+    public ResponseEntity<?> checkAndChangeToReject (@PathVariable Integer id,@PathVariable String startOrder){
+        orderService.changeToReject(id,startOrder);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 }
