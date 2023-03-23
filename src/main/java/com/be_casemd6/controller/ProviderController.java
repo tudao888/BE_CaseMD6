@@ -121,7 +121,10 @@ public class ProviderController {
         }
         return new ResponseEntity<>(HttpStatus.OK);
     }
-
+    @PostMapping("/a/editProviderAndService")
+    public ResponseEntity<Provider> editProvider(@RequestBody Provider provider) {
+    return new ResponseEntity<>(iProviderService.createProvider(provider),HttpStatus.OK);
+    }
     @PostMapping("/a/acceptProvider/sendEmail")
 
     public ResponseEntity<Provider> acceptProvider(@RequestBody Provider provider) {
