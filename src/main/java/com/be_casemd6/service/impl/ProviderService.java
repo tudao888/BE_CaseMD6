@@ -6,6 +6,7 @@ import com.be_casemd6.repo.IOrderRepo;
 import com.be_casemd6.repo.IProviderRepo;
 import com.be_casemd6.service.IProviderService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -32,7 +33,7 @@ public class ProviderService implements IProviderService {
 
     @Override
     public List<Provider> getAllProvider() {
-        return (List<Provider>) iProviderRepo.findAll();
+        return (List<Provider>) iProviderRepo.findAll(Sort.by(Sort.Direction.DESC,"id"));
     }
 
     @Override

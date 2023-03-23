@@ -65,7 +65,6 @@ public class AccountService implements IAccountService, UserDetailsService {
 
     @Override
     public Account createAccount(Account account) {
-        account.setStatusVip(1);
         iAccountRepo.save(account);
         return account;
     }
