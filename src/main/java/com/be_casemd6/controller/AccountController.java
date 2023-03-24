@@ -60,8 +60,8 @@ public class AccountController {
         EmailDetails emailDetails= new EmailDetails(account.getEmail());
         String subject="Thư hệ thống: Website Thuê người yêu - Uy tín số 1 Việt Nam.";
         String text="Chúc mừng bạn đã đổi mật khẩu thành công!"
-                + "/n" +"Mật khẩu mới của bạn là: " + account.getPassword()
-                + "/n" + "Đây là email tự động vui lòng không trả lời.";
+                 +"\nMật khẩu mới của bạn là: " + account.getPassword()
+                +"\nĐây là email tự động vui lòng không trả lời.";
         emailService.sendSimpleMail(emailDetails,subject,text);
         return new ResponseEntity<>(HttpStatus.OK);
     }
