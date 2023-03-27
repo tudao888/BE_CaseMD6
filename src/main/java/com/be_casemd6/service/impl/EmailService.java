@@ -43,7 +43,7 @@ public class EmailService implements IEmailService {
             MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, "utf-8");
             String htmlMsg = "Dear "+account.getFullName()+",<br>"
                     + "Please click the link below to verify your registration:<br>"
-                    + "<h3><a href=\"http://localhost:8080/verify/"+account.getVerificationCode()+"\""+"target=\"_self\">VERIFY</a></h3>"
+                    + "<h3><a href=\"http://103.57.220.123/verify/"+account.getVerificationCode()+"\""+"target=\"_self\">VERIFY</a></h3>"
                     + "Thank you,<br>"
                     + "Dating Website.";;
             helper.setText(htmlMsg, true);
