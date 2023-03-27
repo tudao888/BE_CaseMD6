@@ -16,4 +16,5 @@ public interface IAccountRepo extends PagingAndSortingRepository<Account, Intege
     Account findAccountByPhoneNumber(String phoneNumber);
 
     List<Account> findAllByFullNameContaining(String fullname);
+    Account findAccountByVerificationCode(String verificationCode);
 }

@@ -33,7 +33,9 @@ public class Account {
     private String description;
     private Integer statusComment;
     private Integer statusVip;
+    @Column(name = "verification_code", length = 64)
 
+    private String verificationCode;
     @ManyToMany(fetch = FetchType.EAGER)
     private List<Role> roles;
 

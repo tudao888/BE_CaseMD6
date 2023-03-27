@@ -57,6 +57,11 @@ public class AccountService implements IAccountService, UserDetailsService {
     }
 
     @Override
+    public Account findAccountByVerificationCode(String verificationCode) {
+        return iAccountRepo.findAccountByVerificationCode(verificationCode);
+    }
+
+    @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Account account = iAccountRepo.findAccountByUsername(username);
         return new User(account.getUsername(), account.getPassword(), account.getRoles());
@@ -73,5 +78,8 @@ public class AccountService implements IAccountService, UserDetailsService {
     public Account findAccountByUsername(String username) {
         return iAccountRepo.findAccountByUsername(username);
     }
+
+
+
 
 }

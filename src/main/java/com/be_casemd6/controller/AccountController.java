@@ -3,11 +3,12 @@ package com.be_casemd6.controller;
 import com.be_casemd6.model.*;
 
 import com.be_casemd6.service.*;
+import net.bytebuddy.utility.RandomString;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -17,7 +18,6 @@ import java.util.List;
 public class AccountController {
     @Autowired
     private IAccountService iAccountService;
-
     @Autowired
     private IEmailService emailService;
 
@@ -35,22 +35,28 @@ public class AccountController {
         roles.add(role);
         account.setRoles(roles);
         account.setDateOfRegister(new Date().toString());
-        account.setStatusAccount(1);
+        account.setStatusAccount(3);
         account.setStatusVip(1);
         account.setStatusComment(1);
         account.setWallet(1000.0);
+        String randomCode = RandomString.make(64);
+        account.setVerificationCode(randomCode);
         account.setAvatar("https://phongreviews.com/wp-content/uploads/2022/11/avatar-facebook-mac-dinh-15.jpg");
-        EmailDetails emailDetails = new EmailDetails(account.getEmail());
-        String subject="Thư hệ thống: Website Thuê người yêu - Uy tín số 1 Việt Nam.";
-        String text= "Chúc mừng bạn đã đăng ký tài khoản thành công !"
-                + "/n" + "Tên truy cập: "+ account.getUsername()
-                + "/n" + "Mật khẩu : " + account.getPassword()
-                + "/n" + "Chúc bạn có những trải nghiệm tuyệt vời khi sử dụng dịch vụ của chúng tôi."
-                + "/n"+ "Đây là email tự động vui lòng không trả lời.";
-        emailService.sendSimpleMail(emailDetails, subject, text);
+        emailService.sendHTMLEmail(account);
         iAccountService.createAccount(account);
         return new ResponseEntity<>(account, HttpStatus.OK);
     }
+    @GetMapping("verify/{verificationCode}")
+    public boolean findAccountByVerificationCode(@PathVariable String verificationCode){
+        Account account=iAccountService.findAccountByVerificationCode(verificationCode);
+        if (account!=null){
+            account.setStatusAccount(1);
+            iAccountService.createAccount(account);
+            return true;
+        }
+        return false;
+    }
+
     @PostMapping("/register/forgetPass")
     public ResponseEntity<Account> forgetPassword(@RequestBody Account account){
         int newPassword =  Math.abs((int) Math.floor(((Math.random() * 899999) + 100000)));

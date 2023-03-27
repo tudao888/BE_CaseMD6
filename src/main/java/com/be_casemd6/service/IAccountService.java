@@ -27,4 +27,5 @@ public interface IAccountService {
     List<Account> getAllProvider();
 
     Account findAccountByPhoneNumber(String phoneNumber);
+    Account findAccountByVerificationCode(String verificationCode);
 }
